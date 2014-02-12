@@ -1,0 +1,58 @@
+  /*----------------*/
+ /*----Main Page---*/
+/*----------------*/
+.t_inject_container
+{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    z-index: 999;
+    background-color:grey;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box; 
+}
+
+.menu {
+    background-color:lightblue;
+    border-radius:5px;
+}
+.t_intect_button {
+    background-color:blue;
+    display:block;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    font-size: 20px;
+    color: white;
+    border: 0px;
+    border-radius:7px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box; 
+    border-radius:5px;
+}
+
+.minimize_button{
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    font-size: 12px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box; 
+    border-radius:5px;
+}
+
+ /*-----------------*/
+ /*Timeline Element*/
+/*----------------*/
+.timeline_element {
+    background-color:red;
+    border-radius:5px;
+    
+}
+.t_text_area {
+    height: 50px;
+    width: 100px;
+}
