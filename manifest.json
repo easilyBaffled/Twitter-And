@@ -10,5 +10,5 @@
             "js":["jquery-2.1.0.min.js", "index.js"]
         }
     ],
-    "permissions": [ "<all_urls>", "storage" ]
+    "permissions": [ "<all_urls>", "storage", "tabs" ]
 }

@@ -24,6 +24,7 @@ $(function(){
     }
     
     function create_twitter_bar(){
+        var url = location.href
         var table_container = $("<table />", {
             class: "t_inject_container"
         });
