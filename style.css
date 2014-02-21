@@ -1,22 +1,40 @@
+/*comand + drag for number/color scrubber*/
   /*----------------*/
  /*----Main Page---*/
 /*----------------*/
 .t_inject_container
 {
     position:fixed;
-    bottom:0px;
-    left:0px;
+    bottom:0;
+    left:0;
     z-index: 999;
     background-color:grey;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+.t_inject_container > li {
+    display: inline-block;
+}
+
+ul{
+    list-style: none;
+}
+
+.t_inject_container,
+.t_inject_container * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius:5px;
 }
 
 .menu {
     background-color:lightblue;
     border-radius:5px;
+    margin: 1px;
+    padding: 2px;
 }
+
 .t_intect_button {
     background-color:blue;
     display:block;
@@ -25,12 +43,7 @@
     margin: 5px;
     font-size: 20px;
     color: white;
-    border: 0px;
-    border-radius:7px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box; 
-    border-radius:5px;
+    border: 0;
 }
 
 .minimize_button{
@@ -38,10 +51,6 @@
     width: 20px;
     margin: 2px;
     font-size: 12px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box; 
-    border-radius:5px;
 }
 
  /*-----------------*/
@@ -49,10 +58,67 @@
 /*----------------*/
 .timeline_element {
     background-color:red;
-    border-radius:5px;
-    
 }
-.t_text_area {
-    height: 50px;
-    width: 100px;
+
+.close_button{
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+.search_bar{
+    background-color:white;
+    box-shadow: rgb(204, 204, 204) 0px 0px 0px 1px inset;
+    display: inline-block;
+    border: 1px solid rgb(178, 210, 203);
+    border-radius: 8px;
+    height: 20px%;
+    width: 50px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.search_button {
+    cursor: pointer;
+    display: inline-block;
+    border: 0px;
+    background-color: lightgrey;
+    font-family: 'EntypoRegular';
+    color:darkgrey;
+	font-size: 35px;
+    line-height: 1px;
+    padding: 0px;        
+    height: 4%;
+    width: 4%;
+    margin: 7px 0px;
+    left: 15.4%;
+    -webkit-transition: 0.5s;
+       -moz-transition: 0.5s;
+            transition: 0.5s;
+}
+
+
+  /*----------------*/
+ /*--Entypo Font---*/
+/*----------------*/
+@font-face {
+    font-family: 'EntypoRegular';
+    src: url('font/entypo.eot');
+    src: url('font/entypo.eot?#iefix') format('embedded-opentype'),
+         url('font/entypo.woff') format('woff'),
+         url('font/entypo.ttf') format('truetype'),
+         url('font/entypo.svg#EntypoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EntypoSocial';
+    src: url('font/entypo-social.eot');
+    src: url('font/entypo-social.eot?#iefix') format('embedded-opentype'),
+         url('font/entypo-social.woff') format('woff'),
+         url('font/entypo-social.ttf') format('truetype'),
+         url('font/entypo-social.svg#EntypoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
