@@ -1,5 +1,10 @@
-$(function(){    
+$(function(){ 
     function add_timeline_element(){
+        var url = location.href;
+        var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
+        var searchurl = '127.0.0.1:8000/search_twitter?q='+arr[2];
+
+
         var timeline_element_container = $('<li />');
             var timeline_element = $('<ul />', {
                 class: "timeline_element"
@@ -20,7 +25,7 @@ $(function(){
                         class: "search_button",
                         text: "&#128269;"
                     });
-
+                    
                     section_1.append(close_button);
                     section_1.append(search_bar);
                     //section_2.append(search_button);
@@ -61,6 +66,12 @@ $(function(){
             table_container.append(row);
         $('body').append(table_container);
     }
+
+    var port = chrome.extension.connect({name: "Sample Communication"});
+    port.postMessage(location.href);
+    port.onMessage.addListener(function(msg) {
+            console.log("message recieved"+ msg);
+    });
     create_twitter_bar();
     
     
@@ -95,7 +106,7 @@ $(function(){
             if(scroll_over_time > 400 && scroll_over_time < 3000){
                 $(".add_button").hide();
             }
-        }        
+        }      
     });
 });
 
