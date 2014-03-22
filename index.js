@@ -1,16 +1,22 @@
 $(function(){ 
-    function add_timeline_element(){
-        var url = location.href;
+    function get_data(url){
         var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
         var searchurl = 'http://127.0.0.1:8000/search_twitter?q='+arr[2];
+        var data = [];
 
         $.getJSON(searchurl, function(data) {
             $.each(data, function(key, value){
-                if (key=='search_metadata'){
-                    console.log(value['count']);
+                if (key=='statuses'){
+                    $.each(value, function(k, v){
+                        var tweet = {};
+                        
+                    });
                 }
             });
         });
+    }
+
+    function add_timeline_element(){
         var timeline_element_container = $('<li />');
             var timeline_element = $('<ul />', {
                 class: "timeline_element"
@@ -31,6 +37,8 @@ $(function(){
                         class: "search_button",
                         text: "&#128269;"
                     });
+
+                    var data = get_data(location.href);
 
                     section_1.append(close_button);
                     section_1.append(search_bar);
