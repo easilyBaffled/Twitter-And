@@ -1,106 +1,6 @@
-/*comand + drag for number/color scrubber*/
-  /*----------------*/
- /*----Main Page---*/
-/*----------------*/
-.t_inject_container
-{
-    position:fixed;
-    bottom:0;
-    left:0;
-    z-index: 999;
-    background-color:grey;
-    margin: 0;
-    padding: 0;
-}
-.t_inject_container > li {
-    display: inline-block;
-}
-
-ul{
-    list-style: none;
-}
-
-.t_inject_container,
-.t_inject_container * {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-    border-radius:5px;
-}
-
-.menu {
-    background-color:lightblue;
-    border-radius:5px;
-    margin: 1px;
-    padding: 2px;
-}
-
-.t_intect_button {
-    background-color:blue;
-    display:block;
-    height: 50px;
-    width: 50px;
-    margin: 5px;
-    font-size: 20px;
-    color: white;
-    border: 0;
-}
-
-.minimize_button{
-    height: 20px;
-    width: 20px;
-    margin: 2px;
-    font-size: 12px;
-}
-
- /*-----------------*/
- /*Timeline Element*/
-/*----------------*/
-.timeline_element {
-    background-color:red;
-}
-
-.close_button{
-    height: 20px;
-    width: 20px;
-    display: inline-block;
-}
-
-.search_bar{
-    background-color:white;
-    box-shadow: rgb(204, 204, 204) 0px 0px 0px 1px inset;
-    display: inline-block;
-    border: 1px solid rgb(178, 210, 203);
-    border-radius: 8px;
-    height: 20px%;
-    width: 50px;
-    font-size: 12px;
-    display: inline-block;
-}
-
-.search_button {
-    cursor: pointer;
-    display: inline-block;
-    border: 0px;
-    background-color: lightgrey;
-    font-family: 'EntypoRegular';
-    color:darkgrey;
-	font-size: 35px;
-    line-height: 1px;
-    padding: 0px;        
-    height: 4%;
-    width: 4%;
-    margin: 7px 0px;
-    left: 15.4%;
-    -webkit-transition: 0.5s;
-       -moz-transition: 0.5s;
-            transition: 0.5s;
-}
-
-
-  /*----------------*/
+  /*------------------------------------------------------------------------------------*/
  /*--Entypo Font---*/
-/*----------------*/
+/*------------------------------------------------------------------------------------*/
 @font-face {
     font-family: 'EntypoRegular';
     src: url('font/entypo.eot');
@@ -122,3 +22,162 @@ ul{
     font-weight: normal;
     font-style: normal;
 }
+
+  /*------------------------------------------------------------------------------------*/
+ /*----Main Page---*/
+/*------------------------------------------------------------------------------------*/
+.t_inject_container
+{
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index: 999;
+    background-color:grey;
+    margin: 0;
+    padding: 0;
+}
+.t_inject_container > li {
+    display: inline-block;
+}
+
+ul{
+    list-style: none;
+}
+
+ * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius:5px;
+    vertical-align :  text-bottom;
+}
+
+.menu {
+    background-color:lightblue;
+    margin: 1px;
+    padding: 0px;
+    width:60px;
+}
+
+.large_menu_button{
+    background: #0016f0;
+    color: #ffffff;
+    height: 50px;
+    width: 50px;
+    margin: 3px;
+    font-size: 20px;
+    border-radius:10px;
+}
+.small_menu_button{
+    background: #002aa9;
+    color: #ffffff;
+    height: 20px;
+    width: 20px;
+    margin: 1px;
+    font-size: 12px;
+}
+
+ /*-------------------------------------------------------------------------------------*/
+ /*Selection Element*/
+/*------------------------------------------------------------------------------------*/
+.t_container_element{
+    background-color:red;
+    padding: 5px;
+    height: 150px;
+    width: 325px;
+}
+
+.t_container_element > li{
+    width: 100%;
+    height: 25%;
+}
+
+.close_button{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    vertical-align: top
+}
+
+.search_form{
+    width: 90%;
+    height: 100%;
+    display: inline-block;
+}
+
+.content_selection_button{
+    font-size: 100%;
+    width:100%;
+    height: 100%;
+}
+
+.content_title{
+    width: 90%;
+    height: 100%;
+    display: inline-block;
+}
+
+.content{
+    width: 100%;
+    height: 300%;
+    padding: 2px;
+    background: #0c5bd4;
+}
+
+.t_content{
+    width: 100%;
+    height: 25%;
+    background: #40aeee;
+    border: 1px solid #fffeda;
+}
+ /*-------------------------------------------------------------------------------------*/
+ /*Timeline Element*/
+/*------------------------------------------------------------------------------------*/
+
+
+
+.search_bar{
+    background-color:white;
+    box-shadow: rgb(204, 204, 204) 0px 0px 0px 1px inset;
+    border: 1px solid rgb(178, 210, 203);
+    border-radius: 8px;
+    font-size: 12px;
+    height: 100%;
+    width: 87%; 
+}
+
+.search_button {
+    cursor: pointer;
+    border: 1px;
+    background-color: #d4d4d4;
+    font-family: 'EntypoRegular';
+    color: #5f615c;
+    font-size: 30px;
+    height: 100%;
+    width: 13%;
+}
+
+.pulled_content_container{
+    height: 200px;
+    width: 300px;
+    margin: 5px;
+    overflow:auto;
+    background-color: #cccccc;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.pulled_content {
+    border: 1px;
+    background-color: #eeeeee;    
+}
+
+.new_content_button{
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
