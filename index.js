@@ -1,5 +1,21 @@
 /*jshint -W117 */
 $(function() {
+    function get_data(url){
+        var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
+        var searchurl = 'http://127.0.0.1:8000/search_twitter?q='+arr[2];
+        var data = [];
+
+        $.getJSON(searchurl, function(data) {
+            $.each(data, function(key, value){
+                if (key=='statuses'){
+                    $.each(value, function(k, v){
+                        var tweet = {};
+                        
+                    });
+                }
+            });
+        });
+    }
     function generate_search_form(container_id){
          var search_form = $("<form />", {
                         name: "search_form",
@@ -110,15 +126,14 @@ $(function() {
                     var timeline_selector = generate_content_selector('Timeline', container_id);
                     var relevent_selector = generate_content_selector('Relevent', container_id);
                     var mention_selector = generate_content_selector('Mentions', container_id);
-
                 content_header.append(close_button);
                 content_header.append(search_form);
-            t_container_element.append(content_header);
+                t_container_element.append(content_header);
                 content_container.append(timeline_selector);
                 content_container.append(relevent_selector);
                 content_container.append(mention_selector);
-            t_container_element.append(content_container);
-        container_list_element.append(t_container_element);
+                t_container_element.append(content_container);
+             container_list_element.append(t_container_element);
         return container_list_element;
     }
 
