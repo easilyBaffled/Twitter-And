@@ -50,7 +50,7 @@ $(function() {
     function add_t_content(){
         var container_element = $('#'+this.id);
         var container_children = container_element.children();
-        var content_header = $(container_children[0]);   
+        var content_header = $(container_children[0]); 
         var content_container = $(container_children[1]);
 
         content_header.empty();
@@ -150,7 +150,7 @@ $(function() {
                             });
                             var tweet_element_button = $("<button />", {
                                 text: 'T',
-                                click: comepose_tweet,
+                                click: compose_tweet,
                                 class: "large_menu_button"
                             });
                             var minimize_button = $("<button />", {
