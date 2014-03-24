@@ -50,11 +50,15 @@ $(function() {
         var content_list = $('<ul />', {
             class: "content_list"
         });
-            var content_element = $('<li />', {
-                class: 't_content',
-                text: "content"
+            $.getJSON('http://127.0.0.1:8000/get_timeline', function(data){
+                $.each(data, function(element){
+                    var content_element = $('<li />', {
+                        class: 't_content',
+                        text: data[element]['text']
+                    });
+                    content_list.append(content_element);
+                });
             });
-        content_list.append(content_element);
         return content_list;
     }
 
