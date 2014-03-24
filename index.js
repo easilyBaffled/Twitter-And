@@ -1,9 +1,8 @@
 /*jshint -W117 */
 $(function() {
-    function get_data(url){
+    function get_relevant_data(url){
         var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
         var searchurl = 'http://127.0.0.1:8000/search_twitter?q='+arr[2];
-
         $.getJSON(searchurl, function(data) {
             $.each(data, function(key, value){
                 if (key=='statuses'){
@@ -49,7 +48,7 @@ $(function() {
 
     function generate_content(){
         var content_list = $('<ul />', {
-            class: "content"
+            class: "content_list"
         });
             var content_element = $('<li />', {
                 class: 't_content',
@@ -129,7 +128,7 @@ $(function() {
                 content_container.append(relevent_selector);
                 content_container.append(mention_selector);
                 t_container_element.append(content_container);
-             container_list_element.append(t_container_element);
+                container_list_element.append(t_container_element);
         return container_list_element;
     }
 
