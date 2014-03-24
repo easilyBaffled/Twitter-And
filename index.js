@@ -3,15 +3,11 @@ $(function() {
     function get_data(url){
         var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
         var searchurl = 'http://127.0.0.1:8000/search_twitter?q='+arr[2];
-        var data = [];
 
         $.getJSON(searchurl, function(data) {
             $.each(data, function(key, value){
                 if (key=='statuses'){
-                    $.each(value, function(k, v){
-                        var tweet = {};
-                        
-                    });
+                    return value;
                 }
             });
         });
