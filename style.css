@@ -124,13 +124,29 @@ ul{
     height: 300%;
     padding: 2px;
     background: #0c5bd4;
+    overflow: auto;
 }
 
 .t_content{
     width: 100%;
-    height: 25%;
+    height: 50%;
     background: #40aeee;
     border: 1px solid #fffeda;
+}
+
+.t_content_container_image{
+    display: block;
+    margin: 0;
+    float: left;
+    height: 100%;
+    width: auto;
+}
+.t_content_container_text{
+    margin: 0;
+    overflow: hidden;
+    padding-left: 2px;
+    height: 100%;
+    width: initial;
 }
  /*-------------------------------------------------------------------------------------*/
  /*Timeline Element*/

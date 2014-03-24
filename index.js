@@ -1,8 +1,9 @@
 /*jshint -W117 */
 $(function() {
+    var twitterurl = 'http://127.0.0.1:8000/';
     function get_relevant_data(url){
         var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
-        var searchurl = 'http://127.0.0.1:8000/search_twitter?q='+arr[2];
+        var searchurl = twitterurl+'search_twitter?q='+arr[2];
         $.getJSON(searchurl, function(data) {
             $.each(data, function(key, value){
                 if (key=='statuses'){
@@ -50,12 +51,22 @@ $(function() {
         var content_list = $('<ul />', {
             class: "content_list"
         });
-            $.getJSON('http://127.0.0.1:8000/get_timeline', function(data){
+            $.getJSON(twitterurl+'get_timeline', function(data){
                 $.each(data, function(element){
                     var content_element = $('<li />', {
                         class: 't_content',
-                        text: data[element]['text']
                     });
+                    var t_element_picture = $('<img />', {
+                        class: 't_content_container_image',
+                        src: data[element]['user']['profile_image_url'],
+                    });
+                    var t_element_text = $('<p />', {
+                        class: 't_content_container_text',
+                        id: 't_id_'+data[element]['id_str'],
+                        text: data[element]['text'],
+                    });
+                    content_element.append(t_element_picture);
+                    content_element.append(t_element_text);
                     content_list.append(content_element);
                 });
             });
