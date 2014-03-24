@@ -181,3 +181,37 @@ ul{
     display: inline-block;
 }
 
+ /*-------------------------------------------------------------------------------------*/
+ /*Tweet Element*/
+/*------------------------------------------------------------------------------------*/
+
+
+.tweet_container {
+    background-color:red;
+    padding: 5px;
+    height: 150px;
+    width: 325px;
+}
+
+.tweet_text_area {
+    height: 80%;
+    width: 90%;   
+}
+
+.composition_button {
+    margin: 0px 2px;
+    height: 20%;
+    width: 10%;     
+}
+
+.tweet_word_count {
+    height: 20%;
+    width: 10%;    
+}
+
+.tweet_word_count {
+    background: transparent;
+    color: #b1b7b6;
+    margin: 0px 15%;
+}
+

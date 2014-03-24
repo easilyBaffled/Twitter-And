@@ -139,7 +139,50 @@ $(function() {
     }
 
     function compose_tweet(){
-        alert("To be added");
+        var container_list_element = $("<li />", {
+            class: "tweet_container"
+        });
+                var close_button = $('<button />', {
+                        text: '-',
+                        class: "t_intect_button close_button",
+                        click: function() {
+                                    container_list_element.remove();
+                                  }
+                        });
+                var textarea = $("<textarea />", {
+                    class: "tweet_text_area",
+                    warp: "hard",
+                    placeholder: "Compose new Tweet"
+                });
+                var add_photo_button = $("<button />", {
+                    value: "Add Photo",
+                    class: "composition_button photo_button"
+                });
+                var add_location_button = $("<button />",{
+                    value: "Add Location",
+                    class: "composition_button location_button"
+                });
+                var word_count = $("<textarea />", {
+                    class: "tweet_word_count"
+                });
+                var undo_toggle = $("<button />", {
+                    value: "Undo: Off",
+                    class: "composition_button Undo_button"
+                });
+                var send_tweet_button = $("<button />", {
+                    value: "Send Tweet",
+                    class: "composition_button send_button"
+                });
+            container_list_element.append(close_button);
+            container_list_element.append(textarea);
+            container_list_element.append(add_photo_button);
+            container_list_element.append(add_location_button);
+            container_list_element.append(word_count);
+            container_list_element.append(undo_toggle);
+            container_list_element.append(send_tweet_button);
+            $(".t_inject_container").append(container_list_element);
+
+
     }
 
     function create_twitter_bar() {
