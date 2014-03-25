@@ -24,7 +24,6 @@ $(function() {
     }
 
     function swap_title_and_question(){
-        console.log($(this).parent());
         var current_parent = $(this).parent();
         $(this).remove();
         var search_form = generate_search_form();
@@ -54,6 +53,7 @@ $(function() {
                     content_list.append(notloggedin);
                     return content_list;
                 }
+                
                 $.each(data, function(element){
                     var content_element = $('<li />', {
                         class: 't_content',
