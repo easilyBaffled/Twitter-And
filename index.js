@@ -1,17 +1,7 @@
 /*jshint -W117 */
 $(function() {
-    var twitterurl = 'http://127.0.0.1:8000/';
-    function get_relevant_data(url){
-        var arr = url.match(/(http|https):\/\/(\w+).\w+\/(\w?)/);
-        var searchurl = twitterurl+'search_twitter?q='+arr[2];
-        $.getJSON(searchurl, function(data) {
-            $.each(data, function(key, value){
-                if (key=='statuses'){
-                    return value;
-                }
-            });
-        });
-    }
+    var twitterurl = 'http://twitter-and.herokuapp.com/';
+
     function generate_search_form(container_id){
          var search_form = $("<form />", {
                         name: "search_form",
@@ -55,6 +45,9 @@ $(function() {
                 $.each(data, function(element){
                     var content_element = $('<li />', {
                         class: 't_content',
+                        id: 't_id_'+data[element]['id_str'],
+                        onclick: tweet_info(data[element]['id_str']),
+
                     });
                     var t_element_picture = $('<img />', {
                         class: 't_content_container_image',
@@ -62,7 +55,6 @@ $(function() {
                     });
                     var t_element_text = $('<p />', {
                         class: 't_content_container_text',
-                        id: 't_id_'+data[element]['id_str'],
                         text: data[element]['text'],
                     });
                     content_element.append(t_element_picture);
@@ -71,6 +63,10 @@ $(function() {
                 });
             });
         return content_list;
+    }
+
+    function tweet_info(id){
+        $(".content_list").removeClass('t_content');
     }
 
     function add_t_content(){
@@ -116,7 +112,7 @@ $(function() {
     function generate_container_element(){
         var container_list_element = $('<li />');
             var t_container_element = $('<ul>', {
-                class: 't_container_element',
+                class: 't_container_element t_ul',
                 id: ++container_id
                 });
                 var content_header = $('<li />', {
@@ -202,13 +198,13 @@ $(function() {
     function create_twitter_bar() {
         var url = location.href;
         var table_container = $("<ul />", {
-            class: "t_inject_container"
+            class: "t_inject_container t_ul"
         });
                 var row = $("<li />", {
                     class: "t_inject_row"
                 });
                     var menu = $("<ul />", {
-                        class: "menu"
+                        class: "menu t_ul"
                     });
                         var section_1 = $("<li />");
                             var add_element_button = $("<button />", {
