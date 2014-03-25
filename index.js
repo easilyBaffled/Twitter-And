@@ -42,6 +42,18 @@ $(function() {
             class: "content_list"
         });
             $.getJSON(twitterurl+'get_timeline', function(data){
+                if (data['loggedin'] == 'false'){
+                    var notloggedin = $('<li />', {
+                        class: 't_content',
+                    });
+                    var oops = $('<p />', {
+                        class: 't_content_container_text',
+                        text: 'Not logged in. Go to '+twitterurl+'login',
+                    });
+                    notloggedin.append(oops);
+                    content_list.append(notloggedin);
+                    return content_list;
+                }
                 $.each(data, function(element){
                     var content_element = $('<li />', {
                         class: 't_content',
