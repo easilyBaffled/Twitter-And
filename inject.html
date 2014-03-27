@@ -1,12 +1,51 @@
 <html>
+    
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="inject_style.css" type="text/css"/>
+        <link rel="stylesheet" href="style.css" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="inject.js"></script>
-        
+        <script type="text/javascript" src="index.js"></script>
     </head>
-    <body>
-
+    
+    <body style="">
+        <ul class="t_inject_container t_ul">
+            <li class="app_bar_T">
+                <ul class="menu t_ul">
+                    <li>
+                        <button class="large_menu_button_T">+</button>
+                        <button class="large_menu_button_T">T</button>
+                        <button class="small_menu_button_T">m</button>
+                        <button class="small_menu_button_T">o</button>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="container_element_T t_ul" id="1">
+                    <li class="content_header_T">
+                        <button class="t_intect_button close_button_T">-</button>
+                        <form name="search_form_T" class="search_form_T">
+                            <input type="text" name="search_input" class="search_bar_T">
+                            <button class="search_button_T" name="search_button_T" onclick="add_timeline_element">🔍</button>
+                        </form>
+                    </li>
+                    <li class="content_container_T">
+                        <button value="Timeline" id="1" class="content_selection_button_T">Timeline</button>
+                        <button value="Relevent" id="1" class="content_selection_button_T">Relevent</button>
+                        <button value="Mentions" id="1" class="content_selection_button_T">Mentions</button>
+                    </li>
+                </ul>
+            </li>
+            <li class="tweet_container_T">
+                <button class="t_intect_button close_button_T">-</button>
+                <textarea class="tweet_text_area_T" warp="hard" placeholder="Compose new Tweet"></textarea>
+                <button value="Add Photo" class="composition_button_T photo_button_T"></button>
+                <button value="Add Location" class="composition_button_T location_button_T"></button>
+                <textarea class="tweet_word_count_T"></textarea>
+                <button value="Undo: Off" class="composition_button_T Undo_button_T"></button>
+                <button value="Send Tweet" class="composition_button_T send_button_T"></button>
+            </li>
+        </ul>
+        <script src="http://127.0.0.1:35729/livereload.js?ext=Chrome&amp;extver=2.0.9"></script>
     </body>
+
 </html>

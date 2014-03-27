@@ -5,15 +5,15 @@ $(function() {
     function generate_search_form(container_id){
          var search_form = $("<form />", {
                         name: "search_form",
-                        class: "search_form"
+                        class: "search_form_T"
                     });
                         var search_input = $("<input />", {
                             type: "text",
                             name: "search_input",
-                            class: "search_bar"
+                            class: "search_bar_T"
                         });
                         var search_button = $('<button'
-                            + ' class="search_button"'
+                            + ' class="search_button_T"'
                             + ' name="search_button"'
                             +   'onClick ="add_timeline_element"'
                             +' > &#128269; </button>'
@@ -30,15 +30,13 @@ $(function() {
         current_parent.append(search_form);
     }
 
-    
-
-    function minimize_t_inject_container() {
-        $(".large_menu_button").toggle();
+    function minimize_app() {
+        $(".large_menu_button_T").toggle();
     }
 
     function generate_content(){
         var content_list = $('<ul />', {
-            class: "content_list"
+            class: "content_list_T"
         });
             $.getJSON(twitterurl+'get_timeline', function(data){
                 if (data['loggedin'] == 'false'){
@@ -90,7 +88,7 @@ $(function() {
         content_header.empty();
             var close_button = $('<button />', {
                         text: '-',
-                        class: "t_intect_button close_button",
+                        class: "t_intect_button close_button_T",
                         click: function() {
                                     container_element.parent().remove();
                                   }
@@ -99,7 +97,7 @@ $(function() {
                                 text: this.value,
                                 id: container_id,
                                 click: swap_title_and_question,
-                                class: "content_title"
+                                class: "content_title_T"
                             });
         content_container.empty();
             var content = generate_content();
@@ -115,7 +113,7 @@ $(function() {
                                     value: title,
                                     id: container_id,
                                     click: add_t_content,
-                                    class: "content_selection_button"
+                                    class: "content_selection_button_T"
                                 });
         return add_content_selector;
     }
@@ -124,22 +122,22 @@ $(function() {
     function generate_container_element(){
         var container_list_element = $('<li />');
             var t_container_element = $('<ul>', {
-                class: 't_container_element t_ul',
+                class: 'container_element_T t_ul',
                 id: ++container_id
                 });
                 var content_header = $('<li />', {
-                   class: 'content_header'
+                   class: 'content_header_T'
                    });
                     var close_button = $('<button />', {
                         text: '-',
-                        class: "t_intect_button close_button",
+                        class: "t_intect_button close_button_T",
                         click: function() {
                                     container_list_element.remove();
                                   }
                         });
                     var search_form = generate_search_form(container_id);
                 var content_container = $('<li />', {
-                   class: 'content_container'
+                   class: 'content_container_T'
                    });
                     var timeline_selector = generate_content_selector('Timeline', container_id);
                     var relevent_selector = generate_content_selector('Relevent', container_id);
@@ -157,43 +155,43 @@ $(function() {
 
    function add_content_selection_element(){
         var container_list_element = generate_container_element();
-        $(".t_inject_container").append(container_list_element);
+        $(".app_container_T").append(container_list_element);
     }
 
     function compose_tweet(){
         var container_list_element = $("<li />", {
-            class: "tweet_container"
+            class: "tweet_container_T"
         });
                 var close_button = $('<button />', {
                         text: '-',
-                        class: "t_intect_button close_button",
+                        class: "t_intect_button close_button_T",
                         click: function() {
                                     container_list_element.remove();
                                   }
                         });
                 var textarea = $("<textarea />", {
-                    class: "tweet_text_area",
+                    class: "tweet_text_area_T",
                     warp: "hard",
                     placeholder: "Compose new Tweet"
                 });
                 var add_photo_button = $("<button />", {
                     value: "Add Photo",
-                    class: "composition_button photo_button"
+                    class: "composition_button_T photo_button_T"
                 });
                 var add_location_button = $("<button />",{
                     value: "Add Location",
-                    class: "composition_button location_button"
+                    class: "composition_button_T location_button_T"
                 });
                 var word_count = $("<textarea />", {
-                    class: "tweet_word_count"
+                    class: "tweet_word_count_T"
                 });
                 var undo_toggle = $("<button />", {
                     value: "Undo: Off",
-                    class: "composition_button Undo_button"
+                    class: "composition_button_T Undo_button_T"
                 });
                 var send_tweet_button = $("<button />", {
                     value: "Send Tweet",
-                    class: "composition_button send_button"
+                    class: "composition_button_T send_button_T"
                 });
             container_list_element.append(close_button);
             container_list_element.append(textarea);
@@ -202,42 +200,40 @@ $(function() {
             container_list_element.append(word_count);
             container_list_element.append(undo_toggle);
             container_list_element.append(send_tweet_button);
-            $(".t_inject_container").append(container_list_element);
-
-
+            $(".app_container_T").append(container_list_element);
     }
 
     function create_twitter_bar() {
         var url = location.href;
         var table_container = $("<ul />", {
-            class: "t_inject_container t_ul"
+            class: "app_container_T t_ul"
         });
                 var row = $("<li />", {
-                    class: "t_inject_row"
+                    class: "app_bar_T"
                 });
                     var menu = $("<ul />", {
-                        class: "menu t_ul"
+                        class: "menu_T t_ul"
                     });
                         var section_1 = $("<li />");
                             var add_element_button = $("<button />", {
                                 text: '+',
                                 click: add_content_selection_element,
-                                class: "large_menu_button"
+                                class: "large_menu_button_T"
                             });
                             var tweet_element_button = $("<button />", {
                                 text: 'T',
                                 click: compose_tweet,
-                                class: "large_menu_button"
+                                class: "large_menu_button_T"
                             });
                             var minimize_button = $("<button />", {
                                 text: 'm',
-                                click: minimize_t_inject_container,
-                                class: "small_menu_button"
+                                click: minimize_app,
+                                class: "small_menu_button_T"
                             });
                             var options_button = $("<button />", {
                                 text: 'o',
-                                click: minimize_t_inject_container,
-                                class: "small_menu_button"
+                                click: minimize_app,
+                                class: "small_menu_button_T"
                             });
                         section_1.append(add_element_button);
                         section_1.append(tweet_element_button);
