@@ -24,17 +24,29 @@
 }
 
   /*------------------------------------------------------------------------------------*/
- /*----Main Page---*/
+ /*----Bar---*/
 /*------------------------------------------------------------------------------------*/
+.minimize_button{
+    position:fixed;
+    bottom:1px;
+    left:2px;
+    margin: 1px;
+    z-index: 999;
+    box-sizing: border-box;
+    border-radius:5px;
+    vertical-align :  text-bottom;
+}
+
 .app_container_T{
     position:fixed;
     bottom:0;
     left:0;
-    z-index: 999;
+    z-index: 998;
     background-color:grey;
     margin: 0;
     padding: 0;
 }
+
 .app_container_T > li { /*create a class for them to share itll be faster, like t_ul*/
     display: inline-block;
 }
@@ -44,13 +56,13 @@
 }
 
  .app_container_T * {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     border-radius:5px;
     vertical-align :  text-bottom;
 }
-
+/*------------------------------------------------------------------------------------*/
+ /*----Menu---*/
+/*------------------------------------------------------------------------------------*/
 .menu_T {
     background-color:lightblue;
     margin: 1px;
@@ -74,6 +86,10 @@
     width: 20px;
     margin: 1px;
     font-size: 12px;
+}
+
+.options{
+    margin-left: 26px;
 }
 
  /*-------------------------------------------------------------------------------------*/

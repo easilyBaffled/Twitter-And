@@ -31,7 +31,7 @@ $(function() {
     }
 
     function minimize_app() {
-        $(".large_menu_button_T").toggle();
+        $(".app_container_T").toggle();
     }
 
     function generate_content(){
@@ -225,15 +225,11 @@ $(function() {
                                 click: compose_tweet,
                                 class: "large_menu_button_T"
                             });
-                            var minimize_button = $("<button />", {
-                                text: 'm',
-                                click: minimize_app,
-                                class: "small_menu_button_T"
-                            });
+                           
                             var options_button = $("<button />", {
                                 text: 'o',
                                 click: minimize_app,
-                                class: "small_menu_button_T"
+                                class: "small_menu_button_T options"
                             });
                         section_1.append(add_element_button);
                         section_1.append(tweet_element_button);
@@ -242,7 +238,13 @@ $(function() {
                     menu.append(section_1);
                 row.append(menu);
             table_container.append(row);
+             var minimize_button = $("<button />", {
+                                text: 'm',
+                                click: minimize_app,
+                                class: "small_menu_button_T minimize_button"
+                            });
         $('body').append(table_container);
+        $('body').append(minimize_button);
     }
     create_twitter_bar();
 
@@ -272,7 +274,7 @@ $(function() {
             clearTimeout(done_scrolling);
             done_scrolling = setTimeout(scroll_ending, 150);
             if (scroll_over_time > 400 && scroll_over_time < 3000) {
-                $(".add_button").hide();
+                $(".app_container_T").hide();
             }
         }
     });
