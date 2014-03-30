@@ -70,6 +70,7 @@ $(function() {
                     content_element.append(t_element_picture);
                     content_element.append(t_element_text);
                     content_list.append(content_element);
+
                 });
             });
         return content_list;
@@ -122,9 +123,10 @@ $(function() {
     function generate_container_element(){
         var container_list_element = $('<li />');
             var t_container_element = $('<ul>', {
-                class: 'container_element_T t_ul',
+                class: 'container_element_T t_ul resizableui-widget-content',
                 id: ++container_id
                 });
+             t_container_element.resizable({ handles: "e" });
                 var content_header = $('<li />', {
                    class: 'content_header_T'
                    });
@@ -149,6 +151,8 @@ $(function() {
                 content_container.append(relevent_selector);
                 content_container.append(mention_selector);
                 t_container_element.append(content_container);
+                
+
                 container_list_element.append(t_container_element);
         return container_list_element;
     }
@@ -206,11 +210,16 @@ $(function() {
     function create_twitter_bar() {
         var url = location.href;
         var table_container = $("<ul />", {
-            class: "app_container_T t_ul"
+            class: "app_container_T t_ul",
+            id: "resizable"
         });
-                var row = $("<li />", {
-                    class: "app_bar_T"
+        table_container.resizable({ handles: "n" });
+                var buffer = $("<li />", {
+                    class: "menu_buffer"
                 });
+                var row = $("<li />"
+                  
+                );
                     var menu = $("<ul />", {
                         class: "menu_T t_ul"
                     });
