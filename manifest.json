@@ -6,8 +6,8 @@
     "content_scripts": [
         {
             "matches": [ "<all_urls>"],
-            "css":["style.css"],
-            "js":["jquery-2.1.0.min.js", "index.js"]
+            "css":["style.css", "jquery-ui.css"],
+            "js":["jquery-2.1.0.min.js", "index.js", "jquery-ui.min.js"]
         }
     ],
     "permissions": [ "http://127.0.0.1:8000/", "http://twitter-and.herokuapp.com/*", "<all_urls>", "storage", "tabs" ]

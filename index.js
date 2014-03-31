@@ -126,7 +126,7 @@ $(function() {
                 class: 'container_element_T t_ul resizableui-widget-content',
                 id: ++container_id
                 });
-             t_container_element.resizable({ handles: "e" });
+             //t_container_element.resizable({ handles: "e" });
                 var content_header = $('<li />', {
                    class: 'content_header_T'
                    });
@@ -213,7 +213,7 @@ $(function() {
             class: "app_container_T t_ul",
             id: "resizable"
         });
-        table_container.resizable({ handles: "n" });
+        //table_container.resizable({ handles: "n" });
                 var buffer = $("<li />", {
                     class: "menu_buffer"
                 });
