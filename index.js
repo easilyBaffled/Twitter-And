@@ -126,7 +126,7 @@ $(function() {
                 class: 'container_element_T t_ul resizableui-widget-content',
                 id: ++container_id
                 });
-             //t_container_element.resizable({ handles: "e" });
+             t_container_element.resizable({ handles: "e" });
                 var content_header = $('<li />', {
                    class: 'content_header_T'
                    });
@@ -209,51 +209,54 @@ $(function() {
 
     function create_twitter_bar() {
         var url = location.href;
-        var table_container = $("<ul />", {
-            class: "app_container_T t_ul",
-            id: "resizable"
+        var resize_container = $("<span />", {
+            class: "resize_container"
         });
-        //table_container.resizable({ handles: "n" });
-                var buffer = $("<li />", {
-                    class: "menu_buffer"
-                });
-                var row = $("<li />"
-                  
-                );
-                    var menu = $("<ul />", {
-                        class: "menu_T t_ul"
+            var table_container = $("<ul />", {
+                class: "app_container_T t_ul",
+            });
+            table_container.resizable({ handles: "n" });
+                    var buffer = $("<li />", {
+                        class: "menu_buffer"
                     });
-                        var section_1 = $("<li />");
-                            var add_element_button = $("<button />", {
-                                text: '+',
-                                click: add_content_selection_element,
-                                class: "large_menu_button_T"
-                            });
-                            var tweet_element_button = $("<button />", {
-                                text: 'T',
-                                click: compose_tweet,
-                                class: "large_menu_button_T"
-                            });
-                           
-                            var options_button = $("<button />", {
-                                text: 'o',
-                                click: minimize_app,
-                                class: "small_menu_button_T options"
-                            });
-                        section_1.append(add_element_button);
-                        section_1.append(tweet_element_button);
-                        section_1.append(minimize_button);
-                        section_1.append(options_button);
-                    menu.append(section_1);
-                row.append(menu);
-            table_container.append(row);
-             var minimize_button = $("<button />", {
-                                text: 'm',
-                                click: minimize_app,
-                                class: "small_menu_button_T minimize_button"
-                            });
-        $('body').append(table_container);
+                    var row = $("<li />");
+                        var menu = $("<ul />", {
+                            class: "menu_T t_ul"
+                        });
+                            var section_1 = $("<li />");
+                                var add_element_button = $("<button />", {
+                                    text: '+',
+                                    click: add_content_selection_element,
+                                    class: "large_menu_button_T"
+                                });
+                                var tweet_element_button = $("<button />", {
+                                    text: 'T',
+                                    click: compose_tweet,
+                                    class: "large_menu_button_T"
+                                });
+                               
+                                var options_button = $("<button />", {
+                                    text: 'o',
+                                    click: minimize_app,
+                                    class: "small_menu_button_T options"
+                                });
+                            section_1.append(add_element_button);
+                            section_1.append(tweet_element_button);
+                            section_1.append(minimize_button);
+                            section_1.append(options_button);
+                        menu.append(section_1);
+                    row.append(menu);
+                table_container.append(row);
+                 var minimize_button = $("<button />", {
+                                    text: 'm',
+                                    click: minimize_app,
+                                    class: "small_menu_button_T minimize_button"
+                                });
+                 resize_container.append(table_container);
+        $('body').append(resize_container);
         $('body').append(minimize_button);
+
+
     }
     create_twitter_bar();
 
