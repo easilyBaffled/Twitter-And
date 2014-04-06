@@ -41,12 +41,14 @@
     left          : 2px;
     z-index       : 999;
     box-sizing    : border-box;
+
     border-radius : 5px;
 }
 
 .app_container_T{
     position : relative;
     display  : inline-block;
+
     overflow : scroll;
     height   : 150px;
 }
@@ -58,6 +60,7 @@
 .app_container_T * {
     vertical-align : text-bottom;
     box-sizing     : border-box;
+
     border-radius  : 5px;
 }
 
@@ -66,8 +69,10 @@
 /*------------------------------------------------------------------------------------*/
 .menu_T {
     display          : inline-block;
+
     height           : 100%;
     width            : 60px;
+
     background-color : lightblue;
 }
 
@@ -75,6 +80,7 @@
     height        : 50px;
     width         : 50px;
     margin        : 3px;
+
     background    : #0016f0;
     font-size     : 20px;
     color         : #ffffff;
@@ -85,6 +91,7 @@
     height     : 20px;
     width      : 20px;
     margin     : 1px;
+
     background : #002aa9;
     font-size  : 12px;
     color      : #ffffff;
@@ -98,17 +105,21 @@
  /*Selection Element*/
 /*------------------------------------------------------------------------------------*/
 .container_element_T{
+    position         : relative;
+    display          : inline-block;
+
     overflow         : scroll;
     height           : 100%;
     width            : 325px;
+    margin           : 0;
     padding          : 5px;
+
     background-color : red;
-    display: inline-block;
-    margin: 0;
 }
 
 .content_header_T {
     position : relative;
+
     height   : 35px;
     width    : 100%;
 }
@@ -120,6 +131,7 @@
 .close_button_T{
     display        : inline-block;
     vertical-align : top
+
     height         : 20px;
     width          : 20px;
     margin         : 0;
@@ -128,18 +140,21 @@
 
 .search_form_T {
     display : inline-block;
+
     height  : 35px;
     width   : 90%;
 }
 
 .content_title_T {
     display : inline-block;
+
     height  : 100%;
     width   : 90%;
 }
 
 .content_container_T {
     position : relative;
+
     height   : 100%;
     width    : 100%;
 }
@@ -147,6 +162,7 @@
 .content_selection_button_T {
     height    : 35px;
     width     : 100%;
+
     font-size : 100%;
 }
 
@@ -155,12 +171,14 @@
     height     : 100%;
     width      : 100%;
     padding    : 2px;
+
     background : #0c5bd4;
 }
 
 .t_content{
     height     : 50%;
     width      : 100%;
+
     background : #40aeee;
     border     : 1px solid #fffeda;
 }
@@ -168,6 +186,7 @@
 .t_content_container_image{
     display : block;
     float   : left;
+
     height  : 100%;
     width   : auto;
     margin  : 0;
@@ -187,6 +206,7 @@
 .search_bar_T{
     height           : 100%;
     width            : 87%;
+
     background-color : white;
     font-size        : 12px;
     border           : 1px solid rgb(178, 210, 203);
@@ -197,6 +217,7 @@
 .search_button_T {
     height           : 35px;
     width            : 35px;
+
     cursor           : pointer;
     background-color : #d4d4d4;
     font-family      : 'EntypoRegular';
@@ -209,27 +230,47 @@
  /*Tweet Element*/
 /*------------------------------------------------------------------------------------*/
 .tweet_container_T {
-    height           : 150px;
+    display          : inline-block;
+
+    height           : 100%;
     width            : 325px;
+    margin           : 0;
     padding          : 5px;
+
     background-color : red;
 }
 
+.text_container_T {
+    position : absolute;
+    top      : 5px;
+    bottom   : 35px;
+
+    width    : 100%;
+}
+
 .tweet_text_area_T {
-    height : 80%;
+    height : 100%;
     width  : 90%;
 }
 
+.button_container_T{
+    position : absolute;
+    bottom   : 2px;
+
+    width    : 100%;
+}
+
 .composition_button_T {
-    height : 20%;
-    width  : 10%;
+    height : 30px;
+    width  : 40px;
     margin : 0px 2px;
 }
 
 .tweet_word_count_T {
-    height     : 20%;
-    width      : 10%;
-    margin     : 0px 15%;
+    height     : 30px;
+    width      : 40px;
+    margin     : 0px 3px;
+
     background : transparent;
     color      : #b1b7b6;
 }

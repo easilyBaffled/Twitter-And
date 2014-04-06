@@ -82,19 +82,11 @@ $(function() {
 
     function add_t_content(){
         var container_element = $("#"+this.id);
-
         var container_children = container_element.children();
-        console.log(container_children);
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
         content_header.empty();
-            var close_button = $('<button />', {
-                        text: '-',
-                        class: "t_intect_button close_button_T",
-                        click: function() {
-                                    container_element.parent().remove();
-                                  }
-                        });
+            var close_button = generate_close_button();
             var content_title = $("<button />", {
                                 text: this.value,
                                 id: container_id,
@@ -103,7 +95,6 @@ $(function() {
                             });
         content_container.empty();
             var content = generate_content();
-
         content_header.append(close_button);
         content_header.append(content_title);
         content_container.append(content);
@@ -127,30 +118,20 @@ $(function() {
                 id: ++container_id
                 });
              t_container_element.resizable({ handles: "e" });
-                var content_header = $('<li />', {
-                   class: 'content_header_T'
-                   });
-                    var close_button = $('<button />', {
-                        text: '-',
-                        class: "t_intect_button close_button_T",
-                        click: function() {
-                                    container_list_element.remove();
-                                  }
-                        });
+                var content_header = $('<li />', { class: 'content_header_T' });
+                    var close_button = generate_close_button(container_id);
                     var search_form = generate_search_form(container_id);
-                var content_container = $('<li />', {
-                   class: 'content_container_T'
-                   });
+                var content_container = $('<li />', { class: 'content_container_T' });
                     var timeline_selector = generate_content_selector('Timeline', container_id);
                     var relevent_selector = generate_content_selector('Relevent', container_id);
                     var mention_selector = generate_content_selector('Mentions', container_id);
                 content_header.append(close_button);
                 content_header.append(search_form);
-                t_container_element.append(content_header);
+            t_container_element.append(content_header);
                 content_container.append(timeline_selector);
                 content_container.append(relevent_selector);
                 content_container.append(mention_selector);
-                t_container_element.append(content_container);
+            t_container_element.append(content_container);
         return t_container_element;
     }
 
@@ -159,49 +140,59 @@ $(function() {
         $(".app_container_T").append(container_list_element);
     }
 
-    function compose_tweet(){
-        var container_list_element = $("<li />", {
-            class: "tweet_container_T"
-        });
-                var close_button = $('<button />', {
+    function generate_close_button(container_id){
+        var close_button = $('<button />', {
                         text: '-',
                         class: "t_intect_button close_button_T",
                         click: function() {
-                                    container_list_element.remove();
+                                    $("#" + container_id).remove();
                                   }
                         });
-                var textarea = $("<textarea />", {
-                    class: "tweet_text_area_T",
-                    warp: "hard",
-                    placeholder: "Compose new Tweet"
+        return close_button;
+    }
+
+    function compose_tweet(){
+        var container_list_element = $("<ul />", { 
+                    class: "container_element_T t_ul", 
+                    id: ++container_id
                 });
-                var add_photo_button = $("<button />", {
-                    value: "Add Photo",
-                    class: "composition_button_T photo_button_T"
-                });
-                var add_location_button = $("<button />",{
-                    value: "Add Location",
-                    class: "composition_button_T location_button_T"
-                });
-                var word_count = $("<textarea />", {
-                    class: "tweet_word_count_T"
-                });
-                var undo_toggle = $("<button />", {
-                    value: "Undo: Off",
-                    class: "composition_button_T Undo_button_T"
-                });
-                var send_tweet_button = $("<button />", {
-                    value: "Send Tweet",
-                    class: "composition_button_T send_button_T"
-                });
-            container_list_element.append(close_button);
-            container_list_element.append(textarea);
-            container_list_element.append(add_photo_button);
-            container_list_element.append(add_location_button);
-            container_list_element.append(word_count);
-            container_list_element.append(undo_toggle);
-            container_list_element.append(send_tweet_button);
-            $(".app_container_T").append(container_list_element);
+                var text_container= $('<li />', { class: 'text_container_T' });
+                    var close_button = generate_close_button(container_id);
+                    var textarea = $("<textarea />", {
+                        class: "tweet_text_area_T",
+                        warp: "hard",
+                        placeholder: "Compose new Tweet"
+                    });
+                var button_container = $('<li />', { class: 'button_container_T' });
+                    var add_photo_button = $("<button />", {
+                        value: "Add Photo",
+                        class: "composition_button_T photo_button_T"
+                    });
+                    var add_location_button = $("<button />",{
+                        value: "Add Location",
+                        class: "composition_button_T location_button_T"
+                    });
+                    var word_count = $("<textarea />", {
+                        class: "tweet_word_count_T"
+                    });
+                    var undo_toggle = $("<button />", {
+                        value: "Undo: Off",
+                        class: "composition_button_T Undo_button_T"
+                    });
+                    var send_tweet_button = $("<button />", {
+                        value: "Send Tweet",
+                        class: "composition_button_T send_button_T"
+                    });
+                text_container.append(close_button);
+                text_container.append(textarea);
+                button_container.append(add_photo_button);
+                button_container.append(add_location_button);
+                button_container.append(word_count);
+                button_container.append(undo_toggle);
+                button_container.append(send_tweet_button);
+            container_list_element.append(text_container);
+            container_list_element.append(button_container);
+        $(".app_container_T").append(container_list_element);
     }
 
     function create_twitter_bar() {
