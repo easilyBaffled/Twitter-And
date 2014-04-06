@@ -81,11 +81,12 @@ $(function() {
     }
 
     function add_t_content(){
-        var container_element = $('#'+this.id);
-        var container_children = container_element.children();
-        var content_header = $(container_children[0]);
-        var content_container = $(container_children[1]);
+        var container_element = $("#"+this.id);
 
+        var container_children = container_element.children();
+        console.log(container_children);
+        var content_header = $(container_children[1]);
+        var content_container = $(container_children[2]);
         content_header.empty();
             var close_button = $('<button />', {
                         text: '-',
@@ -121,9 +122,8 @@ $(function() {
 
     var container_id = 0;
     function generate_container_element(){
-        var container_list_element = $('<li />');
             var t_container_element = $('<ul>', {
-                class: 'container_element_T t_ul resizableui-widget-content',
+                class: 'container_element_T t_ul',
                 id: ++container_id
                 });
              t_container_element.resizable({ handles: "e" });
@@ -151,10 +151,7 @@ $(function() {
                 content_container.append(relevent_selector);
                 content_container.append(mention_selector);
                 t_container_element.append(content_container);
-                
-
-                container_list_element.append(t_container_element);
-        return container_list_element;
+        return t_container_element;
     }
 
    function add_content_selection_element(){
@@ -209,54 +206,38 @@ $(function() {
 
     function create_twitter_bar() {
         var url = location.href;
-        var resize_container = $("<span />", {
-            class: "resize_container"
-        });
-            var table_container = $("<ul />", {
-                class: "app_container_T t_ul",
-            });
+        var resize_container = $("<span />", { class: "resize_container" });
+            var table_container = $("<span />", { class: "app_container_T" });
             table_container.resizable({ handles: "n" });
-                    var buffer = $("<li />", {
-                        class: "menu_buffer"
-                    });
-                    var row = $("<li />");
-                        var menu = $("<ul />", {
-                            class: "menu_T t_ul"
-                        });
-                            var section_1 = $("<li />");
-                                var add_element_button = $("<button />", {
-                                    text: '+',
-                                    click: add_content_selection_element,
-                                    class: "large_menu_button_T"
-                                });
-                                var tweet_element_button = $("<button />", {
-                                    text: 'T',
-                                    click: compose_tweet,
-                                    class: "large_menu_button_T"
-                                });
-                               
-                                var options_button = $("<button />", {
-                                    text: 'o',
-                                    click: minimize_app,
-                                    class: "small_menu_button_T options"
-                                });
-                            section_1.append(add_element_button);
-                            section_1.append(tweet_element_button);
-                            section_1.append(minimize_button);
-                            section_1.append(options_button);
-                        menu.append(section_1);
-                    row.append(menu);
-                table_container.append(row);
+                    var menu = $("<span />", { class: "menu_T" });
+                            var add_element_button = $("<button />", {
+                                text: '+',
+                                click: add_content_selection_element,
+                                class: "large_menu_button_T"
+                            });
+                            var tweet_element_button = $("<button />", {
+                                text: 'T',
+                                click: compose_tweet,
+                                class: "large_menu_button_T"
+                            });
+                            var options_button = $("<button />", {
+                                text: 'o',
+                                click: minimize_app,
+                                class: "small_menu_button_T options"
+                            });
+                        menu.append(add_element_button);
+                        menu.append(tweet_element_button);
+                        menu.append(options_button);
+            table_container.append(menu);
+        resize_container.append(table_container);
                  var minimize_button = $("<button />", {
                                     text: 'm',
                                     click: minimize_app,
                                     class: "small_menu_button_T minimize_button"
                                 });
-                 resize_container.append(table_container);
+        resize_container.append(table_container);
         $('body').append(resize_container);
         $('body').append(minimize_button);
-
-
     }
     create_twitter_bar();
 

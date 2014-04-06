@@ -1,251 +1,245 @@
+
   /*------------------------------------------------------------------------------------*/
  /*--Entypo Font---*/
 /*------------------------------------------------------------------------------------*/
 @font-face {
-    font-family: 'EntypoRegular';
-    src: url('font/entypo.eot');
-    src: url('font/entypo.eot?#iefix') format('embedded-opentype'),
-         url('font/entypo.woff') format('woff'),
-         url('font/entypo.ttf') format('truetype'),
-         url('font/entypo.svg#EntypoRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    font-family : 'EntypoRegular';
+    font-style  : normal;
+    font-weight : normal;
+
+    src         : url('font/entypo.eot');
+    src         : url('font/entypo.eot?#iefix') format('embedded-opentype'),
+    url('font/entypo.woff') format('woff'),
+    url('font/entypo.ttf') format('truetype'),
+    url('font/entypo.svg#EntypoRegular') format('svg');
 }
 
 @font-face {
-    font-family: 'EntypoSocial';
-    src: url('font/entypo-social.eot');
-    src: url('font/entypo-social.eot?#iefix') format('embedded-opentype'),
-         url('font/entypo-social.woff') format('woff'),
-         url('font/entypo-social.ttf') format('truetype'),
-         url('font/entypo-social.svg#EntypoRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    font-family : 'EntypoSocial';
+    font-style  : normal;
+    font-weight : normal;
+
+    src         : url('font/entypo-social.eot');
+    src         : url('font/entypo-social.eot?#iefix') format('embedded-opentype'),
+    url('font/entypo-social.woff') format('woff'),
+    url('font/entypo-social.ttf') format('truetype'),
+    url('font/entypo-social.svg#EntypoRegular') format('svg');
 }
 
   /*------------------------------------------------------------------------------------*/
  /*----Bar---*/
 /*------------------------------------------------------------------------------------*/
 .resize_container {
-    position: fixed !important;
-    top: 78% !important;
-    left: 0px !important;
-    width: 100%;
+    position : fixed !important;
+    top      : 78% !important;
+    left     : 0px !important;
 }
 
 .minimize_button{
-    position:fixed;
-    bottom: 21px;
-    left:2px;
-    z-index: 999;
-    box-sizing: border-box;
-    border-radius:5px;
+    position      : fixed;
+    bottom        : 21px;
+    left          : 2px;
+    z-index       : 999;
+    box-sizing    : border-box;
+    border-radius : 5px;
 }
 
 .app_container_T{
-    overflow: scroll;
-    position:relative;
-    bottom: 0;
-    left:0;
-    z-index: 998;
-    padding: 0;
-    margin: 0;
-    height: 150px;
-    box-sizing: border-box;
-    display: inline-block;
-}
-
-.app_container_T > li {
-    display: inline-block;
-    height: 100%;
+    position : relative;
+    display  : inline-block;
+    overflow : scroll;
+    height   : 150px;
 }
 
 .t_ul{
-    list-style: none;
+    list-style : none;
 }
 
- .app_container_T * {
-    box-sizing: border-box;
-    border-radius:5px;
-    vertical-align :  text-bottom;
+.app_container_T * {
+    vertical-align : text-bottom;
+    box-sizing     : border-box;
+    border-radius  : 5px;
 }
+
 /*------------------------------------------------------------------------------------*/
  /*----Menu---*/
 /*------------------------------------------------------------------------------------*/
 .menu_T {
-    background-color:lightblue;
-    padding: 0px;
-    width:60px;
-    height: 100%;
+    display          : inline-block;
+    height           : 100%;
+    width            : 60px;
+    background-color : lightblue;
 }
 
 .large_menu_button_T{
-    background: #0016f0;
-    color: #ffffff;
-    height: 50px;
-    width: 50px;
-    margin: 3px;
-    font-size: 20px;
-    border-radius:10px;
+    height        : 50px;
+    width         : 50px;
+    margin        : 3px;
+    background    : #0016f0;
+    font-size     : 20px;
+    color         : #ffffff;
+    border-radius : 10px;
 }
+
 .small_menu_button_T{
-    background: #002aa9;
-    color: #ffffff;
-    height: 20px;
-    width: 20px;
-    margin: 1px;
-    font-size: 12px;
+    height     : 20px;
+    width      : 20px;
+    margin     : 1px;
+    background : #002aa9;
+    font-size  : 12px;
+    color      : #ffffff;
 }
 
 .options{
-    margin-left: 26px;
+    margin-left : 26px;
 }
 
  /*-------------------------------------------------------------------------------------*/
  /*Selection Element*/
 /*------------------------------------------------------------------------------------*/
 .container_element_T{
-    background-color:red;
-    padding: 5px;
-    height: 100%;
-    width: 325px;
-    overflow: scroll;
+    overflow         : scroll;
+    height           : 100%;
+    width            : 325px;
+    padding          : 5px;
+    background-color : red;
+    display: inline-block;
+    margin: 0;
 }
 
 .content_header_T {
-    position: relative;
-    width: 100%;
-    height: 35px;
+    position : relative;
+    height   : 35px;
+    width    : 100%;
 }
 
 .content_header_T  > * {
-    position: relative;
+    position : relative;
 }
 
 .close_button_T{
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    vertical-align: top
+    display        : inline-block;
+    vertical-align : top
+    height         : 20px;
+    width          : 20px;
+    margin         : 0;
+    padding        : 0;
 }
 
 .search_form_T {
-    width: 90%;
-    height: 35px;
-    display: inline-block;
+    display : inline-block;
+    height  : 35px;
+    width   : 90%;
 }
 
 .content_title_T {
-    width: 90%;
-    height: 100%;
-    display: inline-block;
+    display : inline-block;
+    height  : 100%;
+    width   : 90%;
 }
 
 .content_container_T {
-    width: 100%;
-    height: 100%;
-    position: relative;
+    position : relative;
+    height   : 100%;
+    width    : 100%;
 }
 
 .content_selection_button_T {
-    font-size: 100%;
-    width:100%;
-    height: 35px;
+    height    : 35px;
+    width     : 100%;
+    font-size : 100%;
 }
 
 .content_list_T {
-    width: 100%;
-    height: 100%;
-    padding: 2px;
-    background: #0c5bd4;
-    overflow: auto;
+    overflow   : auto;
+    height     : 100%;
+    width      : 100%;
+    padding    : 2px;
+    background : #0c5bd4;
 }
 
 .t_content{
-    width: 100%;
-    height: 50%;
-    background: #40aeee;
-    border: 1px solid #fffeda;
+    height     : 50%;
+    width      : 100%;
+    background : #40aeee;
+    border     : 1px solid #fffeda;
 }
 
 .t_content_container_image{
-    display: block;
-    margin: 0;
-    float: left;
-    height: 100%;
-    width: auto;
+    display : block;
+    float   : left;
+    height  : 100%;
+    width   : auto;
+    margin  : 0;
 }
+
 .t_content_container_text{
-    margin: 0;
-    overflow: hidden;
-    padding-left: 2px;
-    height: 100%;
-    width: initial;
+    overflow     : hidden;
+    height       : 100%;
+    width        : initial;
+    margin       : 0;
+    padding-left : 2px;
 }
+
  /*-------------------------------------------------------------------------------------*/
  /*Timeline Element*/
 /*------------------------------------------------------------------------------------*/
-
-
-
 .search_bar_T{
-    background-color:white;
-    box-shadow: rgb(204, 204, 204) 0px 0px 0px 1px inset;
-    border: 1px solid rgb(178, 210, 203);
-    border-radius: 8px;
-    font-size: 12px;
-    height: 100%;
-    width: 87%; 
+    height           : 100%;
+    width            : 87%;
+    background-color : white;
+    font-size        : 12px;
+    border           : 1px solid rgb(178, 210, 203);
+    border-radius    : 8px;
+    box-shadow       : rgb(204, 204, 204) 0px 0px 0px 1px inset;
 }
 
 .search_button_T {
-    cursor: pointer;
-    border: 1px;
-    background-color: #d4d4d4;
-    font-family: 'EntypoRegular';
-    color: #5f615c;
-    font-size: 30px;
-    height: 35px;
-    width: 35px;
+    height           : 35px;
+    width            : 35px;
+    cursor           : pointer;
+    background-color : #d4d4d4;
+    font-family      : 'EntypoRegular';
+    font-size        : 30px;
+    color            : #5f615c;
+    border           : 1px;
 }
 
  /*-------------------------------------------------------------------------------------*/
  /*Tweet Element*/
 /*------------------------------------------------------------------------------------*/
 .tweet_container_T {
-    background-color:red;
-    padding: 5px;
-    height: 150px;
-    width: 325px;
+    height           : 150px;
+    width            : 325px;
+    padding          : 5px;
+    background-color : red;
 }
 
 .tweet_text_area_T {
-    height: 80%;
-    width: 90%;   
+    height : 80%;
+    width  : 90%;
 }
 
 .composition_button_T {
-    margin: 0px 2px;
-    height: 20%;
-    width: 10%;     
+    height : 20%;
+    width  : 10%;
+    margin : 0px 2px;
 }
 
 .tweet_word_count_T {
-    height: 20%;
-    width: 10%;
-    background: transparent;
-    color: #b1b7b6;
-    margin: 0px 15%;
+    height     : 20%;
+    width      : 10%;
+    margin     : 0px 15%;
+    background : transparent;
+    color      : #b1b7b6;
 }
 
 .ui-resizable-n {
-    border-top: 5px solid #000000;
-    top: 0;
+    top        : 0;
+    border-top : 5px solid #000000;
 }
 
 .ui-resizable-e {
-    border-right: 5px solid #000000;
-    right: 0;
+    right        : 0;
+    border-right : 5px solid #000000;
 }
