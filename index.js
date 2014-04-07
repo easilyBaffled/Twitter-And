@@ -12,12 +12,11 @@ $(function() {
                             name: "search_input",
                             class: "search_bar_T"
                         });
-                        var search_button = $('<button'
-                            + ' class="search_button_T"'
-                            + ' name="search_button"'
-                            +   'onClick ="add_timeline_element"'
-                            +' > &#128269; </button>'
-                          );
+                        var search_button = $("<button />", {
+                            class: "search_button_T icon-zoom-outline",
+                            name: "search_button",
+                            click:  add_t_content
+                        });
             search_form.append(search_input);
             search_form.append(search_button);
             return search_form;
@@ -153,7 +152,7 @@ $(function() {
 
     function compose_tweet(){
         var container_list_element = $("<ul />", { 
-                    class: "container_element_T t_ul", 
+                    class: "container_element_T t_ul",
                     id: ++container_id
                 });
                 var text_container= $('<li />', { class: 'text_container_T' });
@@ -166,11 +165,11 @@ $(function() {
                 var button_container = $('<li />', { class: 'button_container_T' });
                     var add_photo_button = $("<button />", {
                         value: "Add Photo",
-                        class: "composition_button_T photo_button_T"
+                        class: "composition_button_T icon-camera-outline"
                     });
                     var add_location_button = $("<button />",{
                         value: "Add Location",
-                        class: "composition_button_T location_button_T"
+                        class: "composition_button_T icon-location-outline"
                     });
                     var word_count = $("<textarea />", {
                         class: "tweet_word_count_T"
@@ -180,17 +179,17 @@ $(function() {
                         class: "composition_button_T Undo_button_T"
                     });
                     var send_tweet_button = $("<button />", {
-                        value: "Send Tweet",
+                        value: "Send",
                         class: "composition_button_T send_button_T"
                     });
                 text_container.append(close_button);
                 text_container.append(textarea);
+            container_list_element.append(text_container);
                 button_container.append(add_photo_button);
                 button_container.append(add_location_button);
                 button_container.append(word_count);
                 button_container.append(undo_toggle);
                 button_container.append(send_tweet_button);
-            container_list_element.append(text_container);
             container_list_element.append(button_container);
         $(".app_container_T").append(container_list_element);
     }
@@ -202,19 +201,15 @@ $(function() {
             table_container.resizable({ handles: "n" });
                     var menu = $("<span />", { class: "menu_T" });
                             var add_element_button = $("<button />", {
-                                text: '+',
                                 click: add_content_selection_element,
-                                class: "large_menu_button_T"
+                                class: "large_menu_button_T icon-home-outline"
                             });
                             var tweet_element_button = $("<button />", {
-                                text: 'T',
                                 click: compose_tweet,
-                                class: "large_menu_button_T"
+                                class: "large_menu_button_T icon-pencil"
                             });
                             var options_button = $("<button />", {
-                                text: 'o',
-                                click: minimize_app,
-                                class: "small_menu_button_T options"
+                                class: "small_menu_button_T icon-cog-outline options"
                             });
                         menu.append(add_element_button);
                         menu.append(tweet_element_button);

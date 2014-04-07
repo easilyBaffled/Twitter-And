@@ -3,29 +3,110 @@
  /*--Entypo Font---*/
 /*------------------------------------------------------------------------------------*/
 @font-face {
-    font-family : 'EntypoRegular';
-    font-style  : normal;
-    font-weight : normal;
-
-    src         : url('font/entypo.eot');
-    src         : url('font/entypo.eot?#iefix') format('embedded-opentype'),
-    url('font/entypo.woff') format('woff'),
-    url('font/entypo.ttf') format('truetype'),
-    url('font/entypo.svg#EntypoRegular') format('svg');
+    font-family: "icomoon";
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/icomoon.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family : 'EntypoSocial';
-    font-style  : normal;
-    font-weight : normal;
-
-    src         : url('font/entypo-social.eot');
-    src         : url('font/entypo-social.eot?#iefix') format('embedded-opentype'),
-    url('font/entypo-social.woff') format('woff'),
-    url('font/entypo-social.ttf') format('truetype'),
-    url('font/entypo-social.svg#EntypoRegular') format('svg');
+    font-family: "CabinCondensed-Regular";
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: "CabinCondensed-Medium";
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CabinCondensed-SemiBold";
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-SemiBold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CabinCondensed-Bold";
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.icon-social-twitter:before {
+    content: "\e600";
+}
+.icon-th-menu-outline:before {
+    content: "\e601";
+}
+.icon-home-outline:before {
+    content: "\e602";
+}
+.icon-arrow-forward-outline:before {
+    content: "\e603";
+}
+.icon-arrow-back-outline:before {
+    content: "\e604";
+}
+.icon-location-outline:before {
+    content: "\e605";
+}
+.icon-link-outline:before {
+    content: "\e606";
+}
+.icon-image-outline:before {
+    content: "\e607";
+}
+.icon-star-outline:before {
+    content: "\e608";
+}
+.icon-mail:before {
+    content: "\e609";
+}
+.icon-user-outline:before {
+    content: "\e60a";
+}
+.icon-user-add-outline:before {
+    content: "\e60b";
+}
+.icon-cog-outline:before {
+    content: "\e60c";
+}
+.icon-camera-outline:before {
+    content: "\e60d";
+}
+.icon-zoom-outline:before {
+    content: "\e60e";
+}
+.icon-pencil:before {
+    content: "\e60f";
+}
+.icon-arrow-repeat-outline:before {
+    content: "\e610";
+}
+.icon-arrow-minimise-outline:before {
+    content: "\e611";
+}
+.icon-arrow-maximise-outline:before {
+    content: "\e612";
+}
+.icon-bell:before {
+    content: "\e613";
+}
   /*------------------------------------------------------------------------------------*/
  /*----Bar---*/
 /*------------------------------------------------------------------------------------*/
@@ -91,7 +172,7 @@
     height     : 20px;
     width      : 20px;
     margin     : 1px;
-
+    padding: 0px;
     background : #002aa9;
     font-size  : 12px;
     color      : #ffffff;
@@ -99,6 +180,7 @@
 
 .options{
     margin-left : 26px;
+    text-align:center
 }
 
  /*-------------------------------------------------------------------------------------*/
@@ -217,10 +299,9 @@
 .search_button_T {
     height           : 35px;
     width            : 35px;
-
+    padding: 0px;
     cursor           : pointer;
     background-color : #d4d4d4;
-    font-family      : 'EntypoRegular';
     font-size        : 30px;
     color            : #5f615c;
     border           : 1px;
