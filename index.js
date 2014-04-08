@@ -62,12 +62,17 @@ $(function() {
                         class: 't_content_container_image',
                         src: data[element]['user']['profile_image_url'],
                     });
-                    var t_element_text = $('<p />', {
+                    var t_element_text = $('<span />', {
                         class: 't_content_container_text',
-                        text: data[element]['text'],
+                        text: data[element]['text']
+                    });
+                    var date_posted = $('<span />', {
+                        class: 'date_posted_T',
+                        text: "4 Days"
                     });
                     content_element.append(t_element_picture);
                     content_element.append(t_element_text);
+                    content_element.append(date_posted);
                     content_list.append(content_element);
 
                 });
@@ -85,7 +90,7 @@ $(function() {
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
         content_header.empty();
-            var close_button = generate_close_button();
+            var close_button = generate_close_button(this.id);
             var content_title = $("<button />", {
                                 text: this.value,
                                 id: container_id,
@@ -141,7 +146,7 @@ $(function() {
 
     function generate_close_button(container_id){
         var close_button = $('<button />', {
-                        text: '-',
+                        text: 'x',
                         class: "t_intect_button close_button_T",
                         click: function() {
                                     $("#" + container_id).remove();
@@ -217,9 +222,8 @@ $(function() {
             table_container.append(menu);
         resize_container.append(table_container);
                  var minimize_button = $("<button />", {
-                                    text: 'm',
                                     click: minimize_app,
-                                    class: "small_menu_button_T minimize_button"
+                                    class: "small_menu_button_T minimize_button icon-arrow-minimise-outline"
                                 });
         resize_container.append(table_container);
         $('body').append(resize_container);
