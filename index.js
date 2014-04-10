@@ -56,7 +56,6 @@ $(function() {
                         class: 't_content',
                         id: 't_id_'+data[element]['id_str'],
                         onclick: tweet_info(data[element]['id_str']),
-
                     });
                     var t_element_picture = $('<img />', {
                         class: 't_content_container_image',
@@ -70,9 +69,24 @@ $(function() {
                         class: 'date_posted_T',
                         text: "4 Days"
                     });
+                    var post_account_name = $('<span />', {
+                        class: 'post_account_name',
+                        text: "User Name"
+                    });
+                    var post_account_handle = $('<span />', {
+                        class: 'post_account_handle',
+                        text: "@Username"
+                    });
+                    var options_bar = $('<span />', {
+                        class: 'options_bar options_bar_hidden',
+                        text: "X Reply       X Retweet        X Favorite"
+                    });
                     content_element.append(t_element_picture);
                     content_element.append(t_element_text);
                     content_element.append(date_posted);
+                    content_element.append(post_account_name);
+                    content_element.append(post_account_handle);
+                    content_element.append(options_bar);
                     content_list.append(content_element);
 
 

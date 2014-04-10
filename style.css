@@ -146,18 +146,18 @@
     position : fixed !important;
     top      : 78% !important;
     left     : 0px !important;
-    z-index       : 999;
+    z-index  : 999;
 }
 
 .minimize_button{
     position      : fixed;
     bottom        : 5px;
     left          : 0px;
+    z-index       : 999;
     box-sizing    : border-box;
 
     border        : 0;
     border-radius : 5px;
-    z-index       : 999;
 }
 
 .app_container_T{
@@ -226,14 +226,16 @@
 .container_element_T{
     position         : relative;
     display          : inline-block;
-    overflow: hidden;
+
+    overflow         : hidden;
     height           : 100%;
     width            : 350px;
     min-width        : 225px;
     margin           : 0;
     padding          : 0px;
-    font-size: 15px;
+
     background-color : #0085ff;
+    font-size        : 15px;
 }
 
 .content_header_T {
@@ -246,25 +248,28 @@
 }
 
 .close_button_T{
-    display        : inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: 0;
-    height         : 20px;
-    width          : 20px;
-    margin         : 0;
-    padding        : 0;
-    background-color: #ff391c;
-    color: #ffffff;
+    position         : absolute;
+    display          : inline-block;
+    top              : 0;
+    left             : 0;
+
+    height           : 20px;
+    width            : 20px;
+    margin           : 0;
+    padding          : 0;
+
+    background-color : #ff391c;
+    color            : #ffffff;
+    border           : 0;
 }
 
 .search_form_T {
-    position: absolute;
-    left: 23px;
-    display : inline-block;
-    height  : 35px;
-    width   : 90%;
+    position : absolute;
+    display  : inline-block;
+    left     : 23px;
+
+    height   : 35px;
+    width    : 90%;
 }
 
 .content_title_T {
@@ -289,56 +294,105 @@
 }
 
 .content_list_T {
-    overflow   : auto;
-    height     : 100%;
-    width      : 100%;
-    margin: 0px;
-
+    overflow : auto;
+    height   : 100%;
+    width    : 100%;
+    margin   : 0px;
 }
 
 .t_content{
-    position: relative;
-    height     : 55%;
-    width      : 100%;
-    background : #94c2e3;
-    border-radius: 0px;
-    border: 1px solid #dbe3ba;
+    position      : relative;
+
+    height        : 55%;
+    width         : 100%;
+
+    background    : #94c2e3;
+    border        : 1px solid #dbe3ba;
+    border-radius : 0px;
 }
 
 .t_content_container_image{
-    position: absolute;
-    display : block;
-    left: 0;
-    top: 0;
-    height  : 34px;
-    width   : auto;
-    margin  : 0;
+    position : absolute;
+    display  : block;
+    top      : 0;
+    left     : 0;
+
+    height   : 34px;
+    width    : auto;
+    margin   : 0;
 }
 
 .t_content_container_text{
-    position: absolute;
-    overflow     : hidden;
-    margin       : 0;
-    left: 36px;
-    top: 16px;
-    font-family: CabinCondensed-Bold;
-    font-size: 14px;
-    text-align: left;
+    position    : absolute;
+    top         : 16px;
+    left        : 36px;
 
+    overflow    : hidden;
+    margin      : 0;
+
+    font-family : CabinCondensed-Bold;
+    font-size   : 14px;
+    text-align  : left;
 }
 
 .date_posted_T{
-    display: inline-block;
-    position: absolute;
-    width: 34px;
-    top: 36px;
-    left: 0px;
-    font-family: CabinCondensed-Regular;
-    font-size: 17px;
-    text-align: center;
-    margin: 0;
-    color: #4f5556;
+    position    : absolute;
+    display     : inline-block;
+    top         : 36px;
+    left        : 0px;
 
+    width       : 34px;
+    margin      : 0;
+
+    font-family : CabinCondensed-Regular;
+    font-size   : 17px;
+    color       : #4f5556;
+    text-align  : center;
+}
+
+.post_account_name {
+    position    : absolute;
+    display     : inline-block;
+    top         : 2px;
+    left        : 40px;
+
+    margin      : 0;
+    padding     : 0;
+
+    font-family : CabinCondensed-SemiBold;
+    font-size   : 13px;
+}
+
+.post_account_handle {
+    position    : absolute;
+    display     : inline-block;
+    top         : 2px;
+    left        : 120px;
+
+    margin      : 0;
+    padding     : 0;
+
+    font-family : CabinCondensed-Regular;
+    font-size   : 13px;
+    color       : #4f5556;
+}
+
+.options_bar {
+    position         : absolute;
+    display          : none;
+    bottom           : 0px;
+    left             : 40px;
+
+    margin           : 0px;
+    padding          : 5px;
+
+    background-color : rgba(204, 204, 204, .7);
+    font-family      : CabinCondensed-SemiBold;
+    font-size        : 23px;
+}
+
+.t_content:hover > .options_bar{
+     display: inline-block;
 }
 
  /*-------------------------------------------------------------------------------------*/
@@ -347,7 +401,8 @@
 .search_bar_T{
     height           : 100%;
     width            : 100%;
-    margin: 0px;
+    margin           : 0px;
+
     background-color : white;
     font-size        : 12px;
     border           : 0px solid rgb(178, 210, 203);
@@ -357,8 +412,8 @@
 
 .search_button_T {
     position         : absolute;
-    right               : 0;
-    border            : 0px;
+    right            : 0;
+
     height           : 35px;
     width            : 35px;
     padding          : 0px;
@@ -367,6 +422,7 @@
     background-color : rgb(178, 210, 203);
     font-size        : 30px;
     color            : #5f615c;
+    border           : 0px;
     border           : 1px;
 }
 
