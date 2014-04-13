@@ -69,24 +69,33 @@ $(function() {
                         class: 'date_posted_T',
                         text: "4 Days"
                     });
-                    var post_account_name = $('<span />', {
-                        class: 'post_account_name',
-                        text: "User Name"
-                    });
                     var post_account_handle = $('<span />', {
-                        class: 'post_account_handle',
-                        text: "@Username"
+                        class: 'post_account_name',
+                        text: "User Name" + "   " + "@Username"
                     });
-                    var options_bar = $('<span />', {
+                    var tweet_options_bar = $('<span />', {
                         class: 'options_bar options_bar_hidden',
-                        text: "X Reply       X Retweet        X Favorite"
                     });
+                        var reply_button = $("<button />", {
+                            class: "tweet_options_button icon-arrow-back-outline",
+                            text: "Reply"
+                        });
+                        var retweet_button = $("<button />", {
+                            class: "tweet_options_button icon-arrow-repeat-outline",
+                            text: "Retweet"
+                        });
+                        var favorite_button = $("<button />", {
+                            class: "tweet_options_button icon-star-outline",
+                            text: "Favorite"
+                        });
                     content_element.append(t_element_picture);
                     content_element.append(t_element_text);
                     content_element.append(date_posted);
-                    content_element.append(post_account_name);
                     content_element.append(post_account_handle);
-                    content_element.append(options_bar);
+                        tweet_options_bar.append(reply_button);
+                        tweet_options_bar.append(retweet_button);
+                        tweet_options_bar.append(favorite_button);
+                    content_element.append(tweet_options_bar);
                     content_list.append(content_element);
 
 
@@ -161,7 +170,7 @@ $(function() {
 
     function generate_close_button(container_id){
         var close_button = $('<button />', {
-                        text: '-',
+                        text: 'x',
                         class: "t_intect_button close_button_T",
                         click: function() {
                                     $("#" + container_id).remove();
