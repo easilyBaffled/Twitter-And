@@ -211,14 +211,13 @@ $(function() {
                         value: "Send",
                         class: "composition_button_T send_button_T",
                         click: function() {
-                            var data = {'text': $('.tweet_text_area_T').value};
+                            var data = {'text': $('.tweet_text_area_T').val()};
                             var cleandata = JSON.stringify(data);
                             $.ajax({
                                 url: twitterurl+'send_tweet/',
                                 type: 'POST',
                                 contentType: 'application/json; charset=uft-8',
                                 data: cleandata,
-                                dataType: 'text',
                                 async: false,
                                 crossDomain: false,
                                 success: function(){
