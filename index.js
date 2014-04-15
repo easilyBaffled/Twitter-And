@@ -1,7 +1,7 @@
 /*jshint -W117 */
 $(function() {
-    var twitterurl = 'http://twitter-and.herokuapp.com/';
-
+    //var twitterurl = 'http://twitter-and.herokuapp.com/';
+    var twitterurl = 'http://127.0.0.1:8000/';
     function generate_search_form(container_id){
          var search_form = $("<form />", {
                         name: "search_form",
@@ -144,7 +144,7 @@ $(function() {
             var t_container_element = $('<ul>', {
                 class: 'container_element_T t_ul',
                 id: ++container_id
-                });
+            });
              t_container_element.resizable({ handles: "e" });
                 var content_header = $('<li />', { class: 'content_header_T' });
                     var close_button = generate_close_button(container_id);
@@ -209,7 +209,27 @@ $(function() {
                     });
                     var send_tweet_button = $("<button />", {
                         value: "Send",
-                        class: "composition_button_T send_button_T"
+                        class: "composition_button_T send_button_T",
+                        click: function() {
+                            var data = {'text': $('.tweet_text_area_T').value};
+                            var cleandata = JSON.stringify(data);
+                            $.ajax({
+                                url: twitterurl+'send_tweet/',
+                                type: 'POST',
+                                contentType: 'application/json; charset=uft-8',
+                                data: cleandata,
+                                dataType: 'text',
+                                async: false,
+                                crossDomain: false,
+                                success: function(){
+                                    alert('Tweet Sent!');
+                                },
+                                error: function(){
+                                    alert("There was an error");
+                                }
+                            });
+                            return false;
+                        },
                     });
                 text_container.append(close_button);
                 text_container.append(textarea);
