@@ -200,8 +200,9 @@ $(function() {
                         value: "Add Location",
                         class: "composition_button_T icon-location-outline"
                     });
-                    var word_count = $("<textarea />", {
-                        class: "tweet_word_count_T"
+                    var word_count = $("<button />", {
+                        class: "composition_button_T",
+                        id: "word_count_button_T",
                     });
                     var undo_toggle = $("<button />", {
                         value: "Undo: Off",
@@ -240,6 +241,17 @@ $(function() {
                 button_container.append(send_tweet_button);
             container_list_element.append(button_container);
         $(".app_container_T").append(container_list_element);
+
+            var max_char = 140;
+            $("#word_count_button_T").html(max_char);
+
+            $(".tweet_text_area_T").keyup(function(){
+                var char_count = $(".tweet_text_area_T").val().length;
+                var remaining_char = max_char - char_count;
+                console.log("TEST");
+                $("#word_count_button_T").html(remaining_char);
+            });
+
     }
 
     function create_twitter_bar() {
@@ -282,8 +294,6 @@ $(function() {
 
 
     create_twitter_bar();
-
-
 
     var scroll_point = 0;
     var done_scrolling;
