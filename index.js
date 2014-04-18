@@ -1,7 +1,7 @@
 /*jshint -W117 */
 $(function() {
-    //var twitterurl = 'http://twitter-and.herokuapp.com/';
-    var twitterurl = 'http://127.0.0.1:8000/';
+    var twitterurl = 'http://twitter-and.herokuapp.com/';
+    //var twitterurl = 'http://127.0.0.1:8000/';
     function generate_search_form(container_id){
          var search_form = $("<form />", {
                         name: "search_form",
@@ -114,7 +114,7 @@ $(function() {
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
         content_header.empty();
-            var close_button = generate_close_button();
+            var close_button = generate_close_button(this.id);
             var content_title = $("<button />", {
                                 text: this.value,
                                 id: container_id,
@@ -208,26 +208,31 @@ $(function() {
                         value: "Undo: Off",
                         class: "composition_button_T Undo_button_T"
                     });
-                    var send_tweet_button = $("<button />", {
+                    var send_tweet_button = $("<button>Send</button>", {
                         value: "Send",
                         class: "composition_button_T send_button_T",
                         click: function() {
                             var data = {'text': $('.tweet_text_area_T').val()};
                             var cleandata = JSON.stringify(data);
-                            $.ajax({
-                                url: twitterurl+'send_tweet/',
-                                type: 'POST',
-                                contentType: 'application/json; charset=uft-8',
-                                data: cleandata,
-                                async: false,
-                                crossDomain: false,
-                                success: function(){
-                                    alert('Tweet Sent!');
-                                },
-                                error: function(){
-                                    alert("There was an error");
-                                }
-                            });
+
+                            if ($('.tweet_text_area_T').val().length <= 140){
+                                $.ajax({
+                                    url: twitterurl+'send_tweet/',
+                                    type: 'POST',
+                                    contentType: 'application/json; charset=uft-8',
+                                    data: cleandata,
+                                    async: false,
+                                    crossDomain: false,
+                                    success: function(){
+                                        alert('Tweet Sent!');
+                                    },
+                                    error: function(){
+                                        alert("There was an error");
+                                    }
+                                });
+                            }else{
+                                alert("Too many characters! Cannot send tweet.");
+                            }
                             return false;
                         },
                     });
