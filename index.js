@@ -33,11 +33,25 @@ $(function() {
         $(".app_container_T").toggle();
     }
 
-    function generate_content(){
+    function generate_content(title){
         var content_list = $('<ul />', {
             class: "content_list_T"
         });
-            $.getJSON(twitterurl+'get_timeline', function(data){
+
+        var url = '';
+        if (title == 'Relevant'){
+            url = twitterurl + 'search_twitter?q=' + location.href;
+            console.log(url);
+        }else if (title == 'Timeline'){
+            url = twitterurl + 'get_timeline';
+            console.log(url);
+        }else if (title == 'Mentions'){
+            url = twitterurl + 'mentions';
+        }else{
+            console.log("error"+title);
+        }
+
+            $.getJSON(url, function(data){
                 if (data['loggedin'] == 'false'){
                     var notloggedin = $('<li />', {
                         class: 't_content',
@@ -58,8 +72,13 @@ $(function() {
                     var difference = (Math.round((now-date)/1000)/60);
                     var time = 0;
                     var hours = false;
+                    var days = false;
                     if (difference > 60){
                         time = Math.round(difference/60);
+                        if (time > 23){
+                            time = Math.round(time/24);
+                            days = true;
+                        }
                         hours = true;
                     }else{
                         time = Math.round(difference);
@@ -82,10 +101,17 @@ $(function() {
                     var date_posted;
 
                     if (hours){
-                      date_posted = $('<span />', {
-                        class: 'date_posted_T',
-                        text: time + 'hrs'
-                        });
+                        if (days){
+                            date_posted = $('<span />', {
+                                class: 'date_posted_T',
+                                text: time + 'days'
+                            });
+                        }else{
+                            date_posted = $('<span />', {
+                                class: 'date_posted_T',
+                                text: time + 'hrs'
+                            });
+                        }
                     }else{
                         date_posted = $('<span />', {
                         class: 'date_posted_T',
@@ -134,6 +160,7 @@ $(function() {
     }
 
     function add_t_content(){
+        var title = this.innerText;
         var container_element = $("#"+this.id);
         var container_children = container_element.children();
         var content_header = $(container_children[1]);
@@ -147,7 +174,7 @@ $(function() {
                                 class: "content_title_T"
                             });
         content_container.empty();
-            var content = generate_content();
+        var content = generate_content(title);
         content_header.append(close_button);
         content_header.append(content_title);
         content_container.append(content);
@@ -176,7 +203,7 @@ $(function() {
                     var search_form = generate_search_form(container_id);
                 var content_container = $('<li />', { class: 'content_container_T' });
                     var timeline_selector = generate_content_selector('Timeline', container_id);
-                    var relevent_selector = generate_content_selector('Relevent', container_id);
+                    var relevent_selector = generate_content_selector('Relevant', container_id);
                     var mention_selector = generate_content_selector('Mentions', container_id);
                 content_header.append(close_button);
                 content_header.append(search_form);
