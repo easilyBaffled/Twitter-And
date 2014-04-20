@@ -52,6 +52,19 @@ $(function() {
                 }
                 
                 $.each(data, function(element){
+                    
+                    var now = new Date();
+                    var date = new Date(data[element]['created_at']);
+                    var difference = (Math.round((now-date)/1000)/60);
+                    var time = 0;
+                    var hours = false;
+                    if (difference > 60){
+                        time = Math.round(difference/60);
+                        hours = true;
+                    }else{
+                        time = Math.round(difference);
+                    }
+
                     var content_element = $('<li />', {
                         class: 't_content',
                         id: 't_id_'+data[element]['id_str'],
@@ -65,13 +78,25 @@ $(function() {
                         class: 't_content_container_text',
                         text: data[element]['text']
                     });
-                    var date_posted = $('<span />', {
+
+                    var date_posted;
+
+                    if (hours){
+                      date_posted = $('<span />', {
                         class: 'date_posted_T',
-                        text: "4 Days"
+                        text: time + 'hrs'
+                        });
+                    }else{
+                        date_posted = $('<span />', {
+                        class: 'date_posted_T',
+                        text: time + 'mins'
                     });
+                    }
+
+                    
                     var post_account_handle = $('<span />', {
                         class: 'post_account_name',
-                        text: "User Name" + "   " + "@Username"
+                        text: data[element]['user']['name'] + ' @'+data[element]['user']['screen_name']
                     });
                     var tweet_options_bar = $('<span />', {
                         class: 'options_bar options_bar_hidden',
@@ -114,7 +139,7 @@ $(function() {
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
         content_header.empty();
-            var close_button = generate_close_button(this.id);
+            var close_button = generate_close_button(this.id_str);
             var content_title = $("<button />", {
                                 text: this.value,
                                 id: container_id,
