@@ -139,7 +139,7 @@ $(function() {
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
         content_header.empty();
-            var close_button = generate_close_button(this.id_str);
+            var close_button = generate_close_button(container_id);
             var content_title = $("<button />", {
                                 text: this.value,
                                 id: container_id,
