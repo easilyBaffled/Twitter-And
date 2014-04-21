@@ -104,18 +104,18 @@ $(function() {
                         if (days){
                             date_posted = $('<span />', {
                                 class: 'date_posted_T',
-                                text: time + 'days'
+                                text: time + ' d'
                             });
                         }else{
                             date_posted = $('<span />', {
                                 class: 'date_posted_T',
-                                text: time + 'hrs'
+                                text: time + ' h'
                             });
                         }
                     }else{
                         date_posted = $('<span />', {
                         class: 'date_posted_T',
-                        text: time + 'mins'
+                        text: time + ' m'
                     });
                     }
 
@@ -236,6 +236,7 @@ $(function() {
                     class: "container_element_T t_ul",
                     id: ++container_id
                 });
+        container_list_element.resizable({ handles: "e" });
                 var text_container= $('<li />', { class: 'text_container_T' });
                     var close_button = generate_close_button(container_id);
                     var textarea = $("<textarea />", {
@@ -260,8 +261,8 @@ $(function() {
                         value: "Undo: Off",
                         class: "composition_button_T Undo_button_T"
                     });
-                    var send_tweet_button = $("<button>Send</button>", {
-                        value: "Send",
+                    var send_tweet_button = $("<button />", {
+                        text: "Send",
                         class: "composition_button_T send_button_T",
                         click: function() {
                             var data = {'text': $('.tweet_text_area_T').val()};
