@@ -64,11 +64,12 @@ $(function() {
                     content_list.append(notloggedin);
                     return content_list;
                 }
-                
-                $.each(data, function(element){
+                tweets = data['statuses'];
+                console.log(tweets);
+                $.each(tweets, function(element){
                     
                     var now = new Date();
-                    var date = new Date(data[element]['created_at']);
+                    var date = new Date(tweets[element]['created_at']);
                     var difference = (Math.round((now-date)/1000)/60);
                     var time = 0;
                     var hours = false;
@@ -86,16 +87,16 @@ $(function() {
 
                     var content_element = $('<li />', {
                         class: 't_content',
-                        id: 't_id_'+data[element]['id_str'],
-                        onclick: tweet_info(data[element]['id_str']),
+                        id: 't_id_'+tweets[element]['id_str'],
+                        onclick: tweet_info(tweets[element]['id_str']),
                     });
                     var t_element_picture = $('<img />', {
                         class: 't_content_container_image',
-                        src: data[element]['user']['profile_image_url'],
+                        src: tweets[element]['user']['profile_image_url'],
                     });
                     var t_element_text = $('<span />', {
                         class: 't_content_container_text',
-                        text: data[element]['text']
+                        text: tweets[element]['text']
                     });
 
                     var date_posted;
@@ -122,7 +123,7 @@ $(function() {
                     
                     var post_account_handle = $('<span />', {
                         class: 'post_account_name',
-                        text: data[element]['user']['name'] + ' @'+data[element]['user']['screen_name']
+                        text: tweets[element]['user']['name'] + ' @'+tweets[element]['user']['screen_name']
                     });
                     var tweet_options_bar = $('<span />', {
                         class: 'options_bar options_bar_hidden',
@@ -143,9 +144,9 @@ $(function() {
                     content_element.append(t_element_text);
                     content_element.append(date_posted);
                     content_element.append(post_account_handle);
-                        tweet_options_bar.append(reply_button);
-                        tweet_options_bar.append(retweet_button);
-                        tweet_options_bar.append(favorite_button);
+                    tweet_options_bar.append(reply_button);
+                    tweet_options_bar.append(retweet_button);
+                    tweet_options_bar.append(favorite_button);
                     content_element.append(tweet_options_bar);
                     content_list.append(content_element);
 
