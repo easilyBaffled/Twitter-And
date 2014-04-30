@@ -74,8 +74,12 @@ $(function() {
                     content_list.append(notloggedin);
                     return content_list;
                 }
+                if (data['aretheretweets'] == 'false'){
+                    return content_list;
+                }
+
                 tweets = data['statuses'];
-                console.log(tweets);
+                
                 $.each(tweets, function(element){
                     
                     var now = new Date();
