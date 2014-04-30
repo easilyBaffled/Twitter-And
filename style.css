@@ -7,7 +7,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/icomoon.ttf") format("truetype");
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/icomoon.ttf") format("truetype");
     /*src         : url("icomoon.ttf") format("truetype");*/
 }
 
@@ -17,7 +17,7 @@
     /*src         : url("CabinCondensed-Regular.ttf") format("truetype");*/
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-Regular.ttf") format("truetype");
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-Regular.ttf") format("truetype");
     
 }
 
@@ -26,7 +26,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-Medium.ttf") format("truetype");
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-Medium.ttf") format("truetype");
     /*src         : url("CabinCondensed-Medium.ttf") format("truetype");*/
 }
 
@@ -35,7 +35,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-SemiBold.ttf") format("truetype");
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-SemiBold.ttf") format("truetype");
     /*src         : url("CabinCondensed-SemiBold.ttf") format("truetype");*/
 }
 
@@ -44,7 +44,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-Bold.ttf") format("truetype");
+    src:url("chrome-extension://jlbcdnapnifanpnkidneojhhlpolejpj/CabinCondensed-Bold.ttf") format("truetype");
     /*src         : url("CabinCondensed-Bold.ttf") format("truetype");*/
 }
 
@@ -149,9 +149,9 @@
     z-index  : 999;
 }
 
-.minimize_button{
+.minimize_button_T{
     position      : fixed;
-    bottom        : 5px;
+    bottom        : 10px;
     left          : 0px;
     z-index       : 999;
     box-sizing    : border-box;
@@ -160,12 +160,47 @@
     border-radius : 5px;
 }
 
+.ticker_button_T{
+    position      : fixed;
+    bottom        : 10px;
+    left          : 20px;
+    z-index       : 999;
+    box-sizing    : border-box;
+    width      : 15px;
+    border        : 0;
+    border-radius : 5px;
+}
+
+.ticker_bar_T {
+    position      : fixed;
+    display: none;
+    bottom        : 10px;
+    left          : 40px;
+    right: 0;
+    z-index       : 999;
+    box-sizing    : border-box;
+    height: 20px;
+    border        : 0;
+    border-radius : 5px;
+    background-color : #0085ff;
+    text-align  : center;
+}
+
+.ticker_bar_visiable_T {
+    display: inline-block;
+}
+
 .app_container_T{
     position : relative;
-    display  : inline-block;
+    display  : none;
 
     overflow : scroll;
     height   : 150px;
+    z-index  : 999;
+}
+
+.app_container_visiable_T{
+    display: inline-block;
 }
 
 .t_ul{

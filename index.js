@@ -30,7 +30,17 @@ $(function() {
     }
 
     function minimize_app() {
-        $(".app_container_T").toggle();
+        if($(".ticker_bar_T").hasClass("ticker_bar_visiable_T")){
+            $(".ticker_bar_T").toggleClass("ticker_bar_visiable_T");
+        }
+        $(".app_container_T").toggleClass("app_container_visiable_T");
+    }
+
+    function toggle_ticker() {
+        if($(".app_container_T").hasClass("app_container_visiable_T")){
+            $(".app_container_T").toggleClass("app_container_visiable_T");
+        }
+        $(".ticker_bar_T").toggleClass("ticker_bar_visiable_T");
     }
 
     function generate_content(title){
@@ -341,13 +351,32 @@ $(function() {
         var minimize_button = $("<button />", {
             text: 'm',
             click: minimize_app,
-            class: "small_menu_button_T minimize_button"
+            class: "small_menu_button_T minimize_button_T"
+        });
+
+        var ticker_button = $("<button />", {
+            text: '>',
+            click: toggle_ticker,
+            class: "small_menu_button_T ticker_button_T"
+        });
+        
+        var ticker_bar= $("<marquee/>", {
+            direction: "left",
+            loop: "5",
+            scrollamount: "5",
+            text: "THIS IS TEST TEXT",
+            mouseover: function(){this.stop();},
+            mouseout: function(){this.start();},
+            class: "ticker_bar_T"
         });
 
 
         resize_container.append(table_container);
         $('body').append(resize_container);
         $('body').append(minimize_button);
+        $('body').append(ticker_button);
+        $("body").append(ticker_bar);
+        
     }
 
 
