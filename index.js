@@ -37,6 +37,18 @@ $(function() {
     }
 
     function toggle_ticker() {
+        var s = "";
+
+        $.getJSON(twitterurl+'get_timeline', function(data){
+            tweets = data['statuses'];
+            $.each(tweets, function(element){
+                s+='@'+tweets[element]['user']['screen_name']+'-';
+                s+=tweets[element]['text']+'      &&      ';
+            });
+            $(".ticker_bar_T").append(s);
+
+        });
+
         if($(".app_container_T").hasClass("app_container_visiable_T")){
             $(".app_container_T").toggleClass("app_container_visiable_T");
         }
@@ -75,7 +87,8 @@ $(function() {
                     return content_list;
                 }
                 if (data['aretheretweets'] == 'false'){
-                    return content_list;
+                    console.log("No tweets");
+                    return content_list; //NEED TO FIX
                 }
 
                 tweets = data['statuses'];
@@ -139,6 +152,7 @@ $(function() {
                         class: 'post_account_name',
                         text: tweets[element]['user']['name'] + ' @'+tweets[element]['user']['screen_name']
                     });
+                    
                     var tweet_options_bar = $('<span />', {
                         class: 'options_bar options_bar_hidden',
                     });
@@ -148,11 +162,49 @@ $(function() {
                         });
                         var retweet_button = $("<button />", {
                             class: "tweet_options_button icon-arrow-repeat-outline",
-                            text: "Retweet"
+                            text: "Retweet",
+                            click: function(){
+                                var data = {'id': tweets[element]['id'], 'type': 'retweet'};
+                                var cleandata = JSON.stringify(data);
+                                console.log(cleandata);
+                                $.ajax({
+                                    url: twitterurl+'retweet/',
+                                    type: 'POST',
+                                    contentType: 'application/json; charset=uft-8',
+                                    data: cleandata,
+                                    async: false,
+                                    crossDomain: false,
+                                    success: function(){
+                                        alert('Retweet Complete!');
+                                    },
+                                    error: function(){
+                                        alert("There was an error");
+                                    }
+                                });
+                            }
                         });
                         var favorite_button = $("<button />", {
                             class: "tweet_options_button icon-star-outline",
-                            text: "Favorite"
+                            text: "Favorite",
+                            click: function(){
+                                var data = {'id': tweets[element]['id'], 'type': 'favorite'};
+                                var cleandata = JSON.stringify(data);
+                                console.log(cleandata);
+                                $.ajax({
+                                    url: twitterurl+'retweet/',
+                                    type: 'POST',
+                                    contentType: 'application/json; charset=uft-8',
+                                    data: cleandata,
+                                    async: false,
+                                    crossDomain: false,
+                                    success: function(){
+                                        alert('Favorite Complete!');
+                                    },
+                                    error: function(){
+                                        alert("There was an error");
+                                    }
+                                });
+                            }
                         });
                     content_element.append(t_element_picture);
                     content_element.append(t_element_text);
@@ -293,6 +345,7 @@ $(function() {
                                     crossDomain: false,
                                     success: function(){
                                         alert('Tweet Sent!');
+                                        $("#" + container_id).remove();
                                     },
                                     error: function(){
                                         alert("There was an error");
@@ -348,12 +401,12 @@ $(function() {
 
         menu.append(add_element_button);
         menu.append(tweet_element_button);
-        menu.append(options_button);
+        //menu.append(options_button);
         table_container.append(menu);
         resize_container.append(table_container);
 
         var minimize_button = $("<button />", {
-            text: 'm',
+            text: '&',
             click: minimize_app,
             class: "small_menu_button_T minimize_button_T"
         });
@@ -363,12 +416,13 @@ $(function() {
             click: toggle_ticker,
             class: "small_menu_button_T ticker_button_T"
         });
-        
+
+
+
         var ticker_bar= $("<marquee/>", {
             direction: "left",
             loop: "5",
             scrollamount: "5",
-            text: "THIS IS TEST TEXT",
             mouseover: function(){this.stop();},
             mouseout: function(){this.start();},
             class: "ticker_bar_T"
@@ -413,7 +467,7 @@ $(function() {
             clearTimeout(done_scrolling);
             done_scrolling = setTimeout(scroll_ending, 150);
             if (scroll_over_time > 400 && scroll_over_time < 3000) {
-                $(".app_container_T").hide();
+                minimize_app();
             }
         }
     });
