@@ -43,7 +43,13 @@ $(function() {
             tweets = data['statuses'];
             $.each(tweets, function(element){
                 s+='@'+tweets[element]['user']['screen_name']+'-';
-                s+=tweets[element]['text']+'      &&      ';
+                var tweet_text = tweets[element]['text'];
+                    var url_regex = new RegExp("(https://t\\.co/\\S{0,})|(http://t\\.co/\\S{0,})", "g");
+                    var matched_url = tweet_text.match(url_regex);
+                    var linked_string = "<a href='" + matched_url + "''>Link</a>";
+                    tweet_text = tweet_text.replace(url_regex, linked_string);
+
+                s+=tweet_text+'      &&      ';
             });
             $(".ticker_bar_T").append(s);
         });
@@ -120,9 +126,14 @@ $(function() {
                         class: 't_content_container_image',
                         src: tweets[element]['user']['profile_image_url'],
                     });
+                    var tweet_text = tweets[element]['text'];
+                    var url_regex = new RegExp("(https://t\\.co/\\S{0,})|(http://t\\.co/\\S{0,})", "g");
+                    var matched_url = tweet_text.match(url_regex);
+                    var linked_string = "<a href='" + matched_url + "''>Link</a>";
+                    tweet_text = tweet_text.replace(url_regex, linked_string);
                     var t_element_text = $('<span />', {
                         class: 't_content_container_text',
-                        text: tweets[element]['text']
+                        html: tweet_text
                     });
 
                     var date_posted;
@@ -416,17 +427,14 @@ $(function() {
             class: "small_menu_button_T ticker_button_T"
         });
 
-
-
         var ticker_bar= $("<marquee/>", {
-            direction: "left",
-            loop: "5",
-            scrollamount: "5",
-            mouseover: function(){this.stop();},
-            mouseout: function(){this.start();},
-            class: "ticker_bar_T"
-        });
-
+                direction: "left",
+                loop: "5",
+                scrollamount: "5",
+                mouseover: function(){this.stop();},
+                mouseout: function(){this.start();},
+                class: "ticker_bar_T"
+            });
 
         resize_container.append(table_container);
         $('body').append(resize_container);
