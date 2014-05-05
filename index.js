@@ -46,7 +46,6 @@ $(function() {
                 s+=tweets[element]['text']+'      &&      ';
             });
             $(".ticker_bar_T").append(s);
-
         });
 
         if($(".app_container_T").hasClass("app_container_visiable_T")){
@@ -467,7 +466,9 @@ $(function() {
             clearTimeout(done_scrolling);
             done_scrolling = setTimeout(scroll_ending, 150);
             if (scroll_over_time > 400 && scroll_over_time < 3000) {
-                minimize_app();
+                if($(".app_container_T").hasClass("app_container_visiable_T")){
+                    $(".app_container_T").toggleClass("app_container_visiable_T");
+                }
             }
         }
     });
