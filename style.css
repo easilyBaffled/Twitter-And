@@ -7,7 +7,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/icomoon.ttf") format("truetype");
+    src:url("chrome-extension://__MSG_@@extension_id__/icomoon.ttf") format("truetype");
     /*src         : url("icomoon.ttf") format("truetype");*/
 }
 
@@ -17,7 +17,7 @@
     /*src         : url("CabinCondensed-Regular.ttf") format("truetype");*/
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-Regular.ttf") format("truetype");
+    src:url("chrome-extension://__MSG_@@extension_id__/CabinCondensed-Regular.ttf") format("truetype");
     
 }
 
@@ -26,7 +26,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-Medium.ttf") format("truetype");
+    src:url("chrome-extension://__MSG_@@extension_id__/CabinCondensed-Medium.ttf") format("truetype");
     /*src         : url("CabinCondensed-Medium.ttf") format("truetype");*/
 }
 
@@ -35,7 +35,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-SemiBold.ttf") format("truetype");
+    src:url("chrome-extension://__MSG_@@extension_id__/CabinCondensed-SemiBold.ttf") format("truetype");
     /*src         : url("CabinCondensed-SemiBold.ttf") format("truetype");*/
 }
 
@@ -44,7 +44,7 @@
     font-style                : normal;
     font-weight               : normal;
 
-    src:url("chrome-extension://dhkhaihkgjldkeaahbabmdgeabfgjjjl/CabinCondensed-Bold.ttf") format("truetype");
+    src:url("chrome-extension://__MSG_@@extension_id__/CabinCondensed-Bold.ttf") format("truetype");
     /*src         : url("CabinCondensed-Bold.ttf") format("truetype");*/
 }
 
