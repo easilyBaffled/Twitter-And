@@ -249,6 +249,12 @@
     color      : #ffffff;
     border     : 0;
 }
+.content_button{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/home-outline.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 32px 32px; 
+}
 
 .options{
     margin-left : 26px;
@@ -321,7 +327,7 @@
 .content_selection_button_T {
     height    : 35px;
     width     : 100%;
-
+    background-color: #aeaea8
     font-size : 100%;
 }
 

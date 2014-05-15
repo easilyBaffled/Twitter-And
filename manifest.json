@@ -11,5 +11,5 @@
         }
     ],
     "permissions": [ "http://127.0.0.1:8000/", "http://twitter-and.herokuapp.com/*", "<all_urls>", "storage", "tabs" ],
-    "web_accessible_resources": ["CabinCondensed-Bold.ttf", "CabinCondensed-Medium.ttf", "CabinCondensed-Regular.ttf", "CabinCondensed-SemiBold.ttf", "icomoon.ttf"]
+    "web_accessible_resources": ["CabinCondensed-Bold.ttf", "CabinCondensed-Medium.ttf", "CabinCondensed-Regular.ttf", "CabinCondensed-SemiBold.ttf", "icomoon.ttf", "SVG/*.svg"]
 }

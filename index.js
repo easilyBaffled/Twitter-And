@@ -1,4 +1,5 @@
 /*jshint -W117 */
+/*Grunt Test*/
 $(function() {
     var twitterurl = 'http://twitter-and.herokuapp.com/';
     //var twitterurl = 'http://127.0.0.1:8000/';
@@ -399,16 +400,15 @@ $(function() {
         var menu = $("<span />", { class: "menu_T" });
                 var add_element_button = $("<button />", {
                     click: add_content_selection_element,
-                    class: "large_menu_button_T icon-home-outline"
+                    class: "large_menu_button_T content_button content_button"
                 });
                 var tweet_element_button = $("<button />", {
                     click: compose_tweet,
-                    class: "large_menu_button_T icon-pencil"
+                    class: "large_menu_button_T"
                 });
                 var options_button = $("<button />", {
                     class: "small_menu_button_T icon-cog-outline options"
                 });
-
         menu.append(add_element_button);
         menu.append(tweet_element_button);
         //menu.append(options_button);
