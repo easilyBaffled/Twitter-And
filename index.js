@@ -14,7 +14,7 @@ $(function() {
                             class: "search_bar_T"
                         });
                         var search_button = $("<button />", {
-                            class: "search_button_T icon-zoom-outline",
+                            class: "search_button_T",
                             name: "search_button",
                             click:  add_t_content
                         });
@@ -31,34 +31,59 @@ $(function() {
     }
 
     function minimize_app() {
-        if($(".ticker_bar_T").hasClass("ticker_bar_visiable_T")){
-            $(".ticker_bar_T").toggleClass("ticker_bar_visiable_T");
+        if($(".ticker_controller_T").hasClass("ticker_bar_visiable_T")){
+            $(".ticker_controller_T").toggleClass("ticker_bar_visiable_T");
         }
         $(".app_container_T").toggleClass("app_container_visiable_T");
     }
 
     function toggle_ticker() {
-        var s = "";
 
         $.getJSON(twitterurl+'get_timeline', function(data){
             tweets = data['statuses'];
             $.each(tweets, function(element){
-                s+='@'+tweets[element]['user']['screen_name']+'-';
                 var tweet_text = tweets[element]['text'];
-                    var url_regex = new RegExp("(https://t\\.co/\\S{0,})|(http://t\\.co/\\S{0,})", "g");
-                    var matched_url = tweet_text.match(url_regex);
-                    var linked_string = "<a href='" + matched_url + "''>Link</a>";
-                    tweet_text = tweet_text.replace(url_regex, linked_string);
+                var url_regex = new RegExp("(https://t\\.co/\\S{0,})|(http://t\\.co/\\S{0,})", "g");
+                var matched_url = tweet_text.match(url_regex);
+                var linked_string = "<a class='tweet_link_T' href='" + matched_url + "''>Link</a>";
+                tweet_text = tweet_text.replace(url_regex, linked_string);
 
-                s+=tweet_text+'      &&      ';
+                var tweet_container = $("<div />", {
+                    class: "tweet_ticker_T",
+                });
+                    var user_icon = $("<img />", {
+                        class: "image_ticker_T",
+                        src: "http://goo.gl/NpDXFs"
+                    });
+                    var tweet_text_container = $("<div />", {
+                        class: "text_container_ticker_T",
+                    });
+                        var username = $("<span />", {
+                            class: "username_ticker_T",
+                            text: '@'+tweets[element]['user']['screen_name']
+                        });
+                        var extra_info = $("<span />", {
+                            class: "extra_info_ticker_T",
+                            text: "3m"
+                        });
+                        var content = $("<div />", {
+                            class: "content_ticker_T",
+                            html: tweet_text
+                        });
+                    tweet_text_container.append(username);
+                    tweet_text_container.append(extra_info);
+                    tweet_text_container.append(content);
+                tweet_container.append(user_icon);
+                tweet_container.append(tweet_text_container);
+                $(".ticker_container_T").append(tweet_container);
             });
-            $(".ticker_bar_T").append(s);
+
         });
 
         if($(".app_container_T").hasClass("app_container_visiable_T")){
             $(".app_container_T").toggleClass("app_container_visiable_T");
         }
-        $(".ticker_bar_T").toggleClass("ticker_bar_visiable_T");
+        $(".ticker_controller_T").toggleClass("ticker_bar_visiable_T");
     }
 
     function generate_content(title){
@@ -98,9 +123,9 @@ $(function() {
                 }
 
                 tweets = data['statuses'];
-                
+
                 $.each(tweets, function(element){
-                    
+
                     var now = new Date();
                     var date = new Date(tweets[element]['created_at']);
                     var difference = (Math.round((now-date)/1000)/60);
@@ -158,12 +183,12 @@ $(function() {
                     });
                     }
 
-                    
+
                     var post_account_handle = $('<span />', {
                         class: 'post_account_name',
                         text: tweets[element]['user']['name'] + ' @'+tweets[element]['user']['screen_name']
                     });
-                    
+
                     var tweet_options_bar = $('<span />', {
                         class: 'options_bar options_bar_hidden',
                     });
@@ -325,11 +350,7 @@ $(function() {
                 var button_container = $('<li />', { class: 'button_container_T' });
                     var add_photo_button = $("<button />", {
                         value: "Add Photo",
-                        class: "composition_button_T icon-camera-outline"
-                    });
-                    var add_location_button = $("<button />",{
-                        value: "Add Location",
-                        class: "composition_button_T icon-location-outline"
+                        class: "composition_button_T photo_button"
                     });
                     var word_count = $("<button />", {
                         class: "composition_button_T",
@@ -372,7 +393,6 @@ $(function() {
                 text_container.append(textarea);
                 container_list_element.append(text_container);
                 button_container.append(add_photo_button);
-                button_container.append(add_location_button);
                 button_container.append(word_count);
                 button_container.append(undo_toggle);
                 button_container.append(send_tweet_button);
@@ -400,11 +420,11 @@ $(function() {
         var menu = $("<span />", { class: "menu_T" });
                 var add_element_button = $("<button />", {
                     click: add_content_selection_element,
-                    class: "large_menu_button_T content_button content_button"
+                    class: "large_menu_button_T timeline_button"
                 });
                 var tweet_element_button = $("<button />", {
                     click: compose_tweet,
-                    class: "large_menu_button_T"
+                    class: "compose_button large_menu_button_T"
                 });
                 var options_button = $("<button />", {
                     class: "small_menu_button_T icon-cog-outline options"
@@ -427,21 +447,21 @@ $(function() {
             class: "small_menu_button_T ticker_button_T"
         });
 
-        var ticker_bar= $("<marquee/>", {
-                direction: "left",
-                loop: "5",
-                scrollamount: "5",
-                mouseover: function(){this.stop();},
-                mouseout: function(){this.start();},
-                class: "ticker_bar_T"
+
+        var ticker_controller = $("<div/>", {
+                class: "ticker_controller_T"
+            });
+        var ticker_container = $("<div/>", {
+                class: "ticker_container_T"
             });
 
         resize_container.append(table_container);
         $('body').append(resize_container);
         $('body').append(minimize_button);
         $('body').append(ticker_button);
-        $("body").append(ticker_bar);
-        
+        ticker_controller.append(ticker_container);
+        $('body').append(ticker_controller);
+
     }
 
 
