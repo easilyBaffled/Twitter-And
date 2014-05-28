@@ -1,5 +1,6 @@
 /*jshint -W117 */
 /*Grunt Test*/
+
 $(function() {
     var twitterurl = 'http://twitter-and.herokuapp.com/';
     //var twitterurl = 'http://127.0.0.1:8000/';
@@ -441,31 +442,64 @@ $(function() {
             class: "small_menu_button_T minimize_button_T"
         });
 
-        var ticker_button = $("<button />", {
+        var ticker_toggle = $("<button />", {
             text: '>',
             click: toggle_ticker,
             class: "small_menu_button_T ticker_button_T"
         });
-
-
         var ticker_controller = $("<div/>", {
-                class: "ticker_controller_T"
+                    class: "ticker_controller_T"
+                });
+            var ticker_container = $("<span/>", {
+                    class: "ticker_container_T"
+                });
+            var ticker_buttons = $("<span />", {
+                class: "ticker_buttons"
             });
-        var ticker_container = $("<div/>", {
-                class: "ticker_container_T"
-            });
-
+                var ticker_begining = $("<button />", {
+                    click: function(){
+                        $('.ticker_container_T').stop().animate({
+                            left: '-=6400px'
+                        }, 1000);
+                    },
+                    class: "ticker_direction_button_T ticker_begining_T "
+                });
+                var ticker_end = $("<button />", {
+                    click: function(){
+                        $('.ticker_container_T').stop().animate({
+                            left: '+=6400px'
+                        }, 1000);
+                    },
+                    class: "ticker_direction_button_T ticker_end_T "
+                });
+                var ticker_forward = $("<button />", {
+                    click: function(){
+                        $('.ticker_container_T').stop().animate({
+                            left: '-=1600px'
+                        }, 1000);
+                    },
+                    class: "ticker_direction_button_T ticker_forward_T "
+                });
+                var ticker_backward = $("<button />", {
+                    click: function(){
+                        $('.ticker_container_T').stop().animate({
+                            left: '+=1600px'
+                        }, 1000);
+                    },
+                    class: "ticker_direction_button_T ticker_backward_T "
+                });
         resize_container.append(table_container);
         $('body').append(resize_container);
         $('body').append(minimize_button);
-        $('body').append(ticker_button);
+        $('body').append(ticker_toggle);
+            ticker_buttons.append(ticker_begining);
+            ticker_buttons.append(ticker_end);
+            ticker_buttons.append(ticker_forward);
+            ticker_buttons.append(ticker_backward);
         ticker_controller.append(ticker_container);
+        ticker_controller.append(ticker_buttons);
         $('body').append(ticker_controller);
-
     }
-
-
-
     create_twitter_bar();
 
     var scroll_point = 0;

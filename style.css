@@ -58,87 +58,6 @@
 
     speak          : none;
 }
-
-.icon-social-twitter:before {
-    content : "\e600";
-}
-
-.icon-th-menu-outline:before {
-    content : "\e601";
-}
-
-.icon-home-outline:before {
-    content : "\e602";
-}
-
-.icon-arrow-forward-outline:before {
-    content : "\e603";
-}
-
-.icon-arrow-back-outline:before {
-    content : "\e604";
-}
-
-.icon-location-outline:before {
-    content : "\e605";
-}
-
-.icon-link-outline:before {
-    content : "\e606";
-}
-
-.icon-image-outline:before {
-    content : "\e607";
-}
-
-.icon-star-outline:before {
-    content : "\e608";
-}
-
-.icon-mail:before {
-    content : "\e609";
-}
-
-.icon-user-outline:before {
-    content : "\e60a";
-}
-
-.icon-user-add-outline:before {
-    content : "\e60b";
-}
-
-.icon-cog-outline:before {
-    content : "\e60c";
-}
-
-.icon-camera-outline:before {
-    content : "\e60d";
-}
-
-.icon-zoom-outline:before {
-    content : "\e60e";
-}
-
-.icon-pencil:before {
-    content : "\e60f";
-}
-
-.icon-arrow-repeat-outline:before {
-    content : "\e610";
-}
-
-.icon-arrow-minimise-outline:before {
-    content : "\e611";
-}
-
-.icon-arrow-maximise-outline:before {
-    content : "\e612";
-}
-
-.icon-bell:before {
-    content : "\e613";
-}
-
 .photo_button{
     background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/camera-outline.svg");
     background-repeat: no-repeat;
@@ -190,6 +109,7 @@
     border-radius : 5px;
     background-color : #0085ff;
     overflow: hidden;
+    min-height: 60px;
 }
 
 .ticker_bar_visiable_T {
@@ -202,10 +122,10 @@
 
 @-webkit-keyframes move_eye {
     from {
-        -webkit-transform: translate(65%, 0)
+        -webkit-transform: translate(10%, 0)
     }
     to {
-        -webkit-transform: translate(-100%, 0)
+        -webkit-transform: translate(-16000px, 0)
     }
     90% {
     }
@@ -215,21 +135,23 @@
     white-space: nowrap;
     position: relative;
     display: inline-block;
-    /*-webkit-animation: move_eye 25s linear 0s infinite normal;*/
+    left: 50px;
+    -webkit-animation: move_eye 65s linear 0s infinite normal;
 }
 
 .tweet_ticker_T {
+    position: relative;
     box-sizing: border-box;
     background-color: #EEF;
     display: inline-block;
     border-radius:5px;
-    padding: 3px 5px;
     vertical-align: top;
     margin: 0px 2px;
     height: 60px;
     width: 320px;
     max-width: 400px;
     font-size: .7em;
+    min-height: 60px;
 }
 
 .tweet_ticker_T:hover {
@@ -239,15 +161,17 @@
 .image_ticker_T {
     display:inline-block;
     height: 30px;
-}
-
-.tweet_ticker_T:hover .image_ticker_T {
-    height: 40px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
 
 .text_container_ticker_T {
+    position: absolute;
+    top: 5px;
+    left: 35px;
     display: inline-block;
-    width: 95%;
+    width: 90%;
     text-align:left;
 }
 
@@ -263,11 +187,53 @@
     font-family : CabinCondensed-Bold;
     height: auto;
 }
+.ticker_buttons{
+    display: inline-block;
+    width: 45px;
+    background-color : #0085ff;
+    position: absolute;
+    left: 2px;
+    top: 0px;
+}
+
+.ticker_direction_button_T{
+    height     : 27px;
+    width      : 18px;
+    margin     : 2px;
+    padding    : 0px;
+    background : #002aa9;
+    border     : 0;
+    border-radius  : 5px;
+    display: inline-block;
+}
+.ticker_begining_T{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/media-rewind-outline.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 16px 16px;
+}
+.ticker_forward_T{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/media-reverse-outline.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 16px 16px;
+}
+.ticker_backward_T{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/media-play-outline.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 16px 16px;
+}
+.ticker_end_T{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/media-fast-forward-outline.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 16px 16px;
+}
 
 .app_container_T{
     position : relative;
     display  : none;
-
     overflow : scroll;
     height   : 150px;
     z-index  : 999;
