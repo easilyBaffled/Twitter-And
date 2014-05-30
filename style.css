@@ -1,3 +1,11 @@
+button{
+    background    : #0016f0;
+    color         : #eeeeee;
+    border-radius : 10px;
+    font-size: small;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
 
   /*------------------------------------------------------------------------------------*/
  /*--Entypo Font---*/
@@ -81,20 +89,25 @@
     left          : 0px;
     z-index       : 999;
     box-sizing    : border-box;
-
     border        : 0;
     border-radius : 5px;
 }
 
-.ticker_button_T{
+.ticker_toggle_T{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/chevron-right-outline.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 20px 20px;
     position      : fixed;
     bottom        : 10px;
     left          : 20px;
     z-index       : 999;
     box-sizing    : border-box;
-    width      : 15px;
-    border        : 0;
+    border        : 0px;
     border-radius : 5px;
+    text-align: center;
+    display: inline-block;
+
 }
 
 .ticker_controller_T {
@@ -122,10 +135,10 @@
 
 @-webkit-keyframes move_eye {
     from {
-        -webkit-transform: translate(10%, 0)
+        -webkit-transform: translate(20%, 0)
     }
     to {
-        -webkit-transform: translate(-16000px, 0)
+        -webkit-transform: translate(-6480px, 0)
     }
     90% {
     }
@@ -136,7 +149,7 @@
     position: relative;
     display: inline-block;
     left: 50px;
-    -webkit-animation: move_eye 65s linear 0s infinite normal;
+    -webkit-animation: move_eye 70s linear 0s infinite normal;
 }
 
 .tweet_ticker_T {
@@ -149,13 +162,13 @@
     margin: 0px 2px;
     height: 60px;
     width: 320px;
-    max-width: 400px;
     font-size: .7em;
     min-height: 60px;
 }
 
 .tweet_ticker_T:hover {
-    height:auto;
+    height: 90px;
+    width: 345px;
 }
 
 .image_ticker_T {
@@ -169,15 +182,16 @@
 .text_container_ticker_T {
     position: absolute;
     top: 5px;
-    left: 35px;
+    left: 38px;
     display: inline-block;
-    width: 90%;
+    width: 85%;
     text-align:left;
 }
 
 .content_ticker_T{
     font-family : CabinCondensed-Bold;
-    word-wrap: break-all;
+    word-wrap: normal;
+    word-break: normal;
     white-space: normal;
     font-size: 11px;
 }
@@ -187,17 +201,17 @@
     font-family : CabinCondensed-Bold;
     height: auto;
 }
-.ticker_buttons{
+.ticker_buttons_container_T{
     display: inline-block;
     width: 45px;
     background-color : #0085ff;
     position: absolute;
-    left: 2px;
+    left: 0px;
     top: 0px;
 }
 
 .ticker_direction_button_T{
-    height     : 27px;
+    height     : 25px;
     width      : 18px;
     margin     : 2px;
     padding    : 0px;
@@ -263,7 +277,7 @@
     height           : 100%;
     width            : 50px;
 
-    background-color : lightblue;
+    background-color :#AAC7FF;
 }
 
 .large_menu_button_T{
@@ -271,9 +285,7 @@
     width         : 40px;
     margin        : 2px;
 
-    background    : #0016f0;
     font-size     : 20px;
-    color         : #ffffff;
     border        : 0;
     border-radius : 10px;
 }
@@ -284,10 +296,8 @@
     margin     : 1px;
     padding    : 0px;
 
-    background : #002aa9;
-    font-size  : 12px;
-    color      : #ffffff;
-    border     : 0;
+    font-size  : 16px;
+    border     : 0px;
 }
 .timeline_button{
     background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/home-outline.svg");
@@ -327,6 +337,7 @@
 }
 
 .content_header_T {
+    margin: 5px;
     height : 35px;
     width  : 100%;
 }
@@ -334,7 +345,7 @@
 .close_button_T{
     position         : absolute;
     display          : inline-block;
-    top              : 0;
+    top              : 5;
     left             : 0;
 
     height           : 20px;
@@ -494,7 +505,6 @@
     height           : 100%;
     width            : 100%;
     margin           : 0px;
-
     background-color : white;
     font-size        : 12px;
     border           : 0px solid rgb(178, 210, 203);
@@ -505,16 +515,12 @@
 .search_button_T {
     position         : absolute;
     right            : 0;
-
     height           : 35px;
     width            : 35px;
     padding          : 0px;
-
     cursor           : pointer;
-    background-color : rgb(178, 210, 203);
     font-size        : 30px;
     border           : 0px;
-
     background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/zoom-outline.svg");
     background-repeat: no-repeat;
     background-position:center;
@@ -531,15 +537,13 @@
     width            : 350px;
     margin           : 0;
     padding          : 5px;
-
     background-color : red;
 }
 
 .text_container_T {
     position : absolute;
     top      : 5px;
-    bottom   : 35px;
-
+    bottom   : 40px;
     width    : 100%;
 }
 
@@ -560,7 +564,8 @@
 .composition_button_T {
     height : 30px;
     width  : 50px;
-    margin : 0px 2px;
+    margin : 4px 2px;
+    padding: 0px;
 }
 
 .tweet_word_count_T {
@@ -574,10 +579,10 @@
 
 .ui-resizable-n {
     top        : 0;
-    border-top : 5px solid #000000;
+    border-top : 10px solid #000000;
 }
 
 .ui-resizable-e {
     right        : 0;
-    border-right : 5px solid #000000;
+    border-right : 10px solid #000000;
 }

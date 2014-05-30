@@ -39,8 +39,43 @@ $(function() {
     }
 
     function toggle_ticker() {
+        /*
+        var list_of_tweets = live_timeline.get_timeline();
+        var length_of_list = list_of_tweets.length;
+        for(var index = 0; index < length_of_list; index++){
+            tweet_content = list_of_tweets[index];
+            var tweet_container = $("<div />", {
+                    class: "tweet_ticker_T",
+                });
+                    var user_icon = $("<img />", {
+                        class: "image_ticker_T",
+                        src: tweet_content.tweet_icon
+                    });
+                    var tweet_text_container = $("<div />", {
+                        class: "text_container_ticker_T",
+                    });
+                        var username = $("<span />", {
+                            class: "username_ticker_T",
+                            text: tweet_content.screen_name
+                        });
+                        var extra_info = $("<span />", {
+                            class: "extra_info_ticker_T",
+                            text: tweet_content.time_posted
+                        });
+                        var content = $("<div />", {
+                            class: "content_ticker_T",
+                            html: tweet_content.tweet_text
+                        });
+                    tweet_text_container.append(username);
+                    tweet_text_container.append(extra_info);
+                    tweet_text_container.append(content);
+                tweet_container.append(user_icon);
+                tweet_container.append(tweet_text_container);
+                $(".ticker_container_T").append(tweet_container);
+        }
+        */
 
-        $.getJSON(twitterurl+'get_timeline', function(data){
+           $.getJSON(twitterurl+'get_timeline', function(data){
             tweets = data['statuses'];
             $.each(tweets, function(element){
                 var tweet_text = tweets[element]['text'];
@@ -54,7 +89,7 @@ $(function() {
                 });
                     var user_icon = $("<img />", {
                         class: "image_ticker_T",
-                        src: "http://goo.gl/NpDXFs"
+                        src: tweets[element]['user']['profile_image_url']
                     });
                     var tweet_text_container = $("<div />", {
                         class: "text_container_ticker_T",
@@ -65,7 +100,7 @@ $(function() {
                         });
                         var extra_info = $("<span />", {
                             class: "extra_info_ticker_T",
-                            text: "3m"
+                            text: calculate_time_since_post(tweets[element]['created_at'])
                         });
                         var content = $("<div />", {
                             class: "content_ticker_T",
@@ -85,6 +120,35 @@ $(function() {
             $(".app_container_T").toggleClass("app_container_visiable_T");
         }
         $(".ticker_controller_T").toggleClass("ticker_bar_visiable_T");
+    }
+
+    function calculate_time_since_post(twitter_time){
+        var now = new Date();
+        var date = new Date(twitter_time);
+        var difference = (Math.round((now-date)/1000)/60);
+        var time = 0;
+        var hours = false;
+        var days = false;
+        if (difference > 60){
+            time = Math.round(difference/60);
+            if (time > 23){
+                time = Math.round(time/24);
+                days = true;
+            }
+            hours = true;
+        }else{
+            time = Math.round(difference);
+        }
+        if (hours){
+            if (days){
+                time += ' d';
+            }else{
+                time += ' h';
+            }
+        }else{
+            time += ' m';
+        }
+        return time;
     }
 
     function generate_content(title){
@@ -126,24 +190,6 @@ $(function() {
                 tweets = data['statuses'];
 
                 $.each(tweets, function(element){
-
-                    var now = new Date();
-                    var date = new Date(tweets[element]['created_at']);
-                    var difference = (Math.round((now-date)/1000)/60);
-                    var time = 0;
-                    var hours = false;
-                    var days = false;
-                    if (difference > 60){
-                        time = Math.round(difference/60);
-                        if (time > 23){
-                            time = Math.round(time/24);
-                            days = true;
-                        }
-                        hours = true;
-                    }else{
-                        time = Math.round(difference);
-                    }
-
                     var content_element = $('<li />', {
                         class: 't_content',
                         id: 't_id_'+tweets[element]['id_str'],
@@ -163,27 +209,10 @@ $(function() {
                         html: tweet_text
                     });
 
-                    var date_posted;
-
-                    if (hours){
-                        if (days){
-                            date_posted = $('<span />', {
+                    var date_posted = $('<span />', {
                                 class: 'date_posted_T',
-                                text: time + ' d'
+                                text: calculate_time_since_post(tweets[element]['created_at'])
                             });
-                        }else{
-                            date_posted = $('<span />', {
-                                class: 'date_posted_T',
-                                text: time + ' h'
-                            });
-                        }
-                    }else{
-                        date_posted = $('<span />', {
-                        class: 'date_posted_T',
-                        text: time + ' m'
-                    });
-                    }
-
 
                     var post_account_handle = $('<span />', {
                         class: 'post_account_name',
@@ -357,10 +386,6 @@ $(function() {
                         class: "composition_button_T",
                         id: "word_count_button_T",
                     });
-                    var undo_toggle = $("<button />", {
-                        value: "Undo: Off",
-                        class: "composition_button_T Undo_button_T"
-                    });
                     var send_tweet_button = $("<button />", {
                         text: "Send",
                         class: "composition_button_T send_button_T",
@@ -395,7 +420,6 @@ $(function() {
                 container_list_element.append(text_container);
                 button_container.append(add_photo_button);
                 button_container.append(word_count);
-                button_container.append(undo_toggle);
                 button_container.append(send_tweet_button);
             container_list_element.append(button_container);
         $(".app_container_T").append(container_list_element);
@@ -443,9 +467,8 @@ $(function() {
         });
 
         var ticker_toggle = $("<button />", {
-            text: '>',
             click: toggle_ticker,
-            class: "small_menu_button_T ticker_button_T"
+            class: "small_menu_button_T ticker_toggle_T"
         });
         var ticker_controller = $("<div/>", {
                     class: "ticker_controller_T"
@@ -454,12 +477,12 @@ $(function() {
                     class: "ticker_container_T"
                 });
             var ticker_buttons = $("<span />", {
-                class: "ticker_buttons"
+                class: "ticker_buttons_container_T"
             });
                 var ticker_begining = $("<button />", {
                     click: function(){
                         $('.ticker_container_T').stop().animate({
-                            left: '-=6400px'
+                            left: '-0%'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_begining_T "
@@ -467,7 +490,7 @@ $(function() {
                 var ticker_end = $("<button />", {
                     click: function(){
                         $('.ticker_container_T').stop().animate({
-                            left: '+=6400px'
+                            left: '100%'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_end_T "
@@ -475,7 +498,7 @@ $(function() {
                 var ticker_forward = $("<button />", {
                     click: function(){
                         $('.ticker_container_T').stop().animate({
-                            left: '-=1600px'
+                            left: '-=1269'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_forward_T "
@@ -483,7 +506,7 @@ $(function() {
                 var ticker_backward = $("<button />", {
                     click: function(){
                         $('.ticker_container_T').stop().animate({
-                            left: '+=1600px'
+                            left: '+=1269'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_backward_T "
@@ -500,7 +523,6 @@ $(function() {
         ticker_controller.append(ticker_buttons);
         $('body').append(ticker_controller);
     }
-    create_twitter_bar();
 
     var scroll_point = 0;
     var done_scrolling;
@@ -515,9 +537,6 @@ $(function() {
     $(document).scroll(function() {
         var new_scroll_point = $(document).scrollTop();
         var scroll_delta = Math.abs(scroll_point - new_scroll_point);
-        /*if(scroll_delta < 0){
-            scroll_delta = scroll_delta * (-1);
-        }*/
         scroll_point = new_scroll_point;
         if (counting === false) {
             counting = setInterval(function() {
@@ -534,4 +553,88 @@ $(function() {
             }
         }
     });
+/*
+function gather_and_organize_content(title){
+    list_of_tweets = [];
+    $.getJSON(twitterurl + 'get_timeline', function(data){
+        console.log("******");
+        if(data['loggedin'] != 'false' && data['aretheretweets'] != 'false'){
+            tweets = data['statuses'];
+            console.log("=====");
+            console.log(list_of_tweets);
+            console.log("=====");
+            $.each(tweets, function(element){
+                var now = new Date();
+                var date = new Date(tweets[element]['created_at']);
+                var difference = (Math.round((now-date)/1000)/60);
+                var time = 0;
+                var hours = false;
+                var days = false;
+                if (difference > 60){
+                    time = Math.round(difference/60);
+                    if (time > 23){
+                        time = Math.round(time/24);
+                        days = true;
+                    }
+                    hours = true;
+                }else{
+                    time = Math.round(difference);
+                }
+                var tweet_text = tweets[element]['text'];
+                var url_regex = new RegExp("(https://t\\.co/\\S{0,})|(http://t\\.co/\\S{0,})", "g");
+                var matched_url = tweet_text.match(url_regex);
+                var linked_string = "<a href='" + matched_url + "''>Link</a>";
+                tweet_text = tweet_text.replace(url_regex, linked_string);
+
+                if (hours){
+                    if (days){
+                        time = time + ' d';
+                    }else{
+                        time = time + ' h';
+                    }
+                }else{
+                    time =  time + ' m';
+                }
+                var tweet_content  = {
+                    'user_name': tweets[element]['user']['name'],
+                    'screen_name': ' @'+tweets[element]['user']['screen_name'],
+                    'time_posted': time,
+                    'tweet_text': tweet_text,
+                    'tweet_icon': tweets[element]['user']['profile_image_url'],
+                };
+                list_of_tweets.push(tweet_content);
+            });
+        }
+    });
+    console.log("----");
+    console.log(list_of_tweets);
+    console.log("----");
+    return list_of_tweets;
+
+}
+
+function Timeline(){
+    this.timeline_content = [];
+    this.check_timeline = '';
+    this.start_timeline_interval = function(){
+        this.timeline_content = gather_and_organize_content();
+        this.check_timeline = setInterval(function() {
+                this.timeline_content = gather_and_organize_content();
+            }, 180000);
+    };
+    this.manually_check_timeline = function(){
+        clearTimeout(this.check_timeline);
+        this.start_timeline_interval();
+        return this.timeline_content;
+    };
+    this.get_timeline = function(){
+        return this.timeline_content;
+    };
+    this.start_timeline_interval();
+}
+
+var live_timeline = new Timeline();
+*/
+create_twitter_bar();
+
 });
