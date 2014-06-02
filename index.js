@@ -5,7 +5,7 @@ $(function() {
     var twitterurl = 'http://twitter-and.herokuapp.com/';
     //var twitterurl = 'http://127.0.0.1:8000/';
     function generate_search_form(container_id){
-         var search_form = $("<form />", {
+         var search_form = $("<div />", {
                         name: "search_form",
                         class: "search_form_T"
                     });
@@ -16,6 +16,7 @@ $(function() {
                         });
                         var search_button = $("<button />", {
                             class: "search_button_T",
+                            id: container_id,
                             name: "search_button",
                             click:  add_t_content
                         });
@@ -159,14 +160,12 @@ $(function() {
         var url = '';
         if (title == 'Relevant'){
             url = twitterurl + 'search_twitter?q=' + location.href;
-            console.log(url);
         }else if (title == 'Timeline'){
             url = twitterurl + 'get_timeline';
-            console.log(url);
         }else if (title == 'Mentions'){
             url = twitterurl + 'mentions';
         }else{
-            console.log("error"+title);
+            url = twitterurl + 'search_twitter?q=' + title;
         }
 
             $.getJSON(url, function(data){
@@ -183,8 +182,17 @@ $(function() {
                     return content_list;
                 }
                 if (data['aretheretweets'] == 'false'){
-                    console.log("No tweets");
-                    return content_list; //NEED TO FIX
+                    var no_tweets = $('<li />', {
+                        class: 't_content',
+                    });
+                    var message = $('<p />', {
+                        class: 't_content_container_text',
+                        text: 'No Tweets. Sorry.',
+                    });
+                    no_tweets.append(message);
+                    content_list.append(no_tweets);
+
+                    return content_list;
                 }
 
                 tweets = data['statuses'];
@@ -222,12 +230,18 @@ $(function() {
                     var tweet_options_bar = $('<span />', {
                         class: 'options_bar options_bar_hidden',
                     });
+                        var reply_button_icon = $("<span />", {
+                            class: 'reply_button_icon'
+                        });
                         var reply_button = $("<button />", {
-                            class: "tweet_options_button icon-arrow-back-outline",
+                            class: "tweet_options_button",
                             text: "Reply"
                         });
+                        var retweet_button_icon = $("<span />", {
+                            class: 'retweet_button_icon'
+                        });
                         var retweet_button = $("<button />", {
-                            class: "tweet_options_button icon-arrow-repeat-outline",
+                            class: "tweet_options_button",
                             text: "Retweet",
                             click: function(){
                                 var data = {'id': tweets[element]['id'], 'type': 'retweet'};
@@ -249,8 +263,11 @@ $(function() {
                                 });
                             }
                         });
+                        var favorite_button_icon = $("<span />", {
+                            class: 'favorite_button_icon',
+                        });
                         var favorite_button = $("<button />", {
-                            class: "tweet_options_button icon-star-outline",
+                            class: "tweet_options_button",
                             text: "Favorite",
                             click: function(){
                                 var data = {'id': tweets[element]['id'], 'type': 'favorite'};
@@ -276,8 +293,11 @@ $(function() {
                     content_element.append(t_element_text);
                     content_element.append(date_posted);
                     content_element.append(post_account_handle);
+                    tweet_options_bar.append(reply_button_icon);
                     tweet_options_bar.append(reply_button);
+                    tweet_options_bar.append(retweet_button_icon);
                     tweet_options_bar.append(retweet_button);
+                    tweet_options_bar.append(favorite_button_icon);
                     tweet_options_bar.append(favorite_button);
                     content_element.append(tweet_options_bar);
                     content_list.append(content_element);
@@ -298,10 +318,17 @@ $(function() {
         var container_children = container_element.children();
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
+
+        console.log(this);
+        if(this.className == "search_button_T"){
+            var search_bar = $(".search_bar_T");
+            title = $(search_bar).val();
+        }
+
         content_header.empty();
             var close_button = generate_close_button(container_id);
             var content_title = $("<button />", {
-                                text: this.value,
+                                text: title,
                                 id: container_id,
                                 click: swap_title_and_question,
                                 class: "content_title_T"
@@ -430,7 +457,6 @@ $(function() {
             $(".tweet_text_area_T").keyup(function(){
                 var char_count = $(".tweet_text_area_T").val().length;
                 var remaining_char = max_char - char_count;
-                console.log("TEST");
                 $("#word_count_button_T").html(remaining_char);
             });
 

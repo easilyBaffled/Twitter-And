@@ -73,12 +73,42 @@ button{
     background-size: 32px 32px;
 }
 
+.reply_button_icon{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/reply.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 25px 25px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.retweet_button_icon{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/retweet.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.favorite_button_icon{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/favorite.svg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 25px 25px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
   /*------------------------------------------------------------------------------------*/
  /*----Bar---*/
 /*------------------------------------------------------------------------------------*/
 .resize_container {
     position : fixed !important;
-    top      : 78% !important;
+    top      : 75% !important;
     left     : 0px !important;
     z-index  : 999;
 }
@@ -285,9 +315,9 @@ button{
     width         : 40px;
     margin        : 2px;
 
-    font-size     : 20px;
     border        : 0;
     border-radius : 10px;
+    background-color    : #0016f0;
 }
 
 .small_menu_button_T{
@@ -298,6 +328,7 @@ button{
 
     font-size  : 16px;
     border     : 0px;
+    background-color     : #0016f0;
 }
 .timeline_button{
     background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/home-outline.svg");
@@ -385,7 +416,8 @@ button{
 .content_selection_button_T {
     height    : 35px;
     width     : 100%;
-    background-color: #aeaea8
+    background-color     : #0016f0;
+    border: 1px solid #ffffff;
     font-size : 100%;
 }
 
@@ -429,6 +461,7 @@ button{
     margin      : 0;
 
     font-family : CabinCondensed-Bold;
+    color: #000000;
     font-size   : 14px;
     text-align  : left;
 }
@@ -488,6 +521,8 @@ button{
     border: 0px;
     font-size: 15px;
     background-color : transparent;
+    padding: 0px;
+    margin: 0px 7px 1px 2px;
 }
 
 .t_content:hover > .options_bar {
@@ -566,6 +601,8 @@ button{
     width  : 50px;
     margin : 4px 2px;
     padding: 0px;
+    background-color     : #0016f0;
+    border: 1px solid #ffffff;
 }
 
 .tweet_word_count_T {
