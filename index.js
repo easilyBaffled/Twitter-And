@@ -167,7 +167,6 @@ $(function() {
         }else{
             url = twitterurl + 'search_twitter?q=' + title;
         }
-
             $.getJSON(url, function(data){
                 if (data['loggedin'] == 'false'){
                     var notloggedin = $('<li />', {
@@ -246,7 +245,6 @@ $(function() {
                             click: function(){
                                 var data = {'id': tweets[element]['id'], 'type': 'retweet'};
                                 var cleandata = JSON.stringify(data);
-                                console.log(cleandata);
                                 $.ajax({
                                     url: twitterurl+'retweet/',
                                     type: 'POST',
@@ -272,7 +270,6 @@ $(function() {
                             click: function(){
                                 var data = {'id': tweets[element]['id'], 'type': 'favorite'};
                                 var cleandata = JSON.stringify(data);
-                                console.log(cleandata);
                                 $.ajax({
                                     url: twitterurl+'retweet/',
                                     type: 'POST',
@@ -293,6 +290,7 @@ $(function() {
                     content_element.append(t_element_text);
                     content_element.append(date_posted);
                     content_element.append(post_account_handle);
+                    /*
                     tweet_options_bar.append(reply_button_icon);
                     tweet_options_bar.append(reply_button);
                     tweet_options_bar.append(retweet_button_icon);
@@ -300,6 +298,7 @@ $(function() {
                     tweet_options_bar.append(favorite_button_icon);
                     tweet_options_bar.append(favorite_button);
                     content_element.append(tweet_options_bar);
+                    */
                     content_list.append(content_element);
 
 
@@ -318,8 +317,6 @@ $(function() {
         var container_children = container_element.children();
         var content_header = $(container_children[1]);
         var content_container = $(container_children[2]);
-
-        console.log(this);
         if(this.className == "search_button_T"){
             var search_bar = $(".search_bar_T");
             title = $(search_bar).val();
@@ -462,6 +459,31 @@ $(function() {
 
     }
 
+    function alert_that_page_is_broken(){
+        $.ajax({//https://medium.com/@mariusc23/send-an-email-using-only-javascript-b53319616782
+                        type: 'POST',
+                        url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+                        data: {
+                            'key': 'gt6C7Ues5GFKmhG9o8vPcw',
+                            'message': {
+                                        'from_email': 'dmichaelis0@gmail.com',
+                                        'to': [
+                                                {
+                                                    'email': 'dmichaelis0@gmail.com',
+                                                    'name': 'Dan',
+                                                    'type': 'to'
+                                                },
+                                            ],
+                                        'autotext': 'true',
+                                        'subject': 'Twitter & is broken on this site',
+                                        'html': document.URL
+                                        }
+                                }
+                        }).done(function(response) {
+                            console.log(response); // if you're into that sorta thing
+                        });
+                }
+
     function create_twitter_bar() {
         var url = location.href;
         var resize_container = $("<span />", { class: "resize_container" });
@@ -486,6 +508,13 @@ $(function() {
         table_container.append(menu);
         resize_container.append(table_container);
 
+        var broken_alert_button = $("<button />", {
+            text: '!',
+            click: alert_that_page_is_broken,
+            mousedown: function(){ $(this).css("background-color", "#ab2529"); },
+            mouseup: function(){ $(this).css("background-color", "#cc2b2f"); },
+            class: "small_menu_button_T broken_alert_button_T"
+        });
         var minimize_button = $("<button />", {
             text: '&',
             click: minimize_app,
@@ -507,16 +536,18 @@ $(function() {
             });
                 var ticker_begining = $("<button />", {
                     click: function(){
+                        console.log("==============");
                         $('.ticker_container_T').stop().animate({
-                            left: '-0%'
+                            left: '-=3200'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_begining_T "
                 });
                 var ticker_end = $("<button />", {
                     click: function(){
+                        console.log("==============");
                         $('.ticker_container_T').stop().animate({
-                            left: '100%'
+                            left: '+=3200'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_end_T "
@@ -524,7 +555,7 @@ $(function() {
                 var ticker_forward = $("<button />", {
                     click: function(){
                         $('.ticker_container_T').stop().animate({
-                            left: '-=1269'
+                            left: '-=960'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_forward_T "
@@ -532,19 +563,21 @@ $(function() {
                 var ticker_backward = $("<button />", {
                     click: function(){
                         $('.ticker_container_T').stop().animate({
-                            left: '+=1269'
+                            left: '+=960'
                         }, 1000);
                     },
                     class: "ticker_direction_button_T ticker_backward_T "
                 });
         resize_container.append(table_container);
         $('body').append(resize_container);
+        $('body').append(broken_alert_button);
         $('body').append(minimize_button);
         $('body').append(ticker_toggle);
             ticker_buttons.append(ticker_begining);
             ticker_buttons.append(ticker_end);
             ticker_buttons.append(ticker_forward);
             ticker_buttons.append(ticker_backward);
+
         ticker_controller.append(ticker_container);
         ticker_controller.append(ticker_buttons);
         $('body').append(ticker_controller);

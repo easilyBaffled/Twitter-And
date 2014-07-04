@@ -113,14 +113,33 @@ button{
     z-index  : 999;
 }
 
+.small_menu_button_T{
+    height     : 20px;
+    width      : 20px;
+    margin     : 1px;
+    padding    : 0px;
+    font-size  : 16px;
+    border     : 0px;
+    border-radius : 5px;
+    background-color     : #0016f0;
+    color: #ffffff;
+}
+
+.broken_alert_button_T{
+    position      : fixed;
+    bottom        : 35px;
+    left          : 0px;
+    z-index       : 999;
+    box-sizing    : border-box;
+    background-color: #cc2b2f;
+}
+
 .minimize_button_T{
     position      : fixed;
     bottom        : 10px;
     left          : 0px;
     z-index       : 999;
     box-sizing    : border-box;
-    border        : 0;
-    border-radius : 5px;
 }
 
 .ticker_toggle_T{
@@ -133,11 +152,8 @@ button{
     left          : 20px;
     z-index       : 999;
     box-sizing    : border-box;
-    border        : 0px;
-    border-radius : 5px;
     text-align: center;
     display: inline-block;
-
 }
 
 .ticker_controller_T {
@@ -165,7 +181,7 @@ button{
 
 @-webkit-keyframes move_eye {
     from {
-        -webkit-transform: translate(20%, 0)
+        -webkit-transform: translate(10%, 0)
     }
     to {
         -webkit-transform: translate(-6480px, 0)
@@ -179,7 +195,7 @@ button{
     position: relative;
     display: inline-block;
     left: 50px;
-    -webkit-animation: move_eye 70s linear 0s infinite normal;
+    -webkit-animation: move_eye 90s linear 0s infinite normal;
 }
 
 .tweet_ticker_T {
@@ -318,18 +334,9 @@ button{
     border        : 0;
     border-radius : 10px;
     background-color    : #0016f0;
+    color: #ffffff;
 }
 
-.small_menu_button_T{
-    height     : 20px;
-    width      : 20px;
-    margin     : 1px;
-    padding    : 0px;
-
-    font-size  : 16px;
-    border     : 0px;
-    background-color     : #0016f0;
-}
 .timeline_button{
     background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/home-outline.svg");
     background-repeat: no-repeat;
@@ -419,6 +426,7 @@ button{
     background-color     : #0016f0;
     border: 1px solid #ffffff;
     font-size : 100%;
+    color: #ffffff;
 }
 
 .content_list_T {
@@ -560,6 +568,7 @@ button{
     background-repeat: no-repeat;
     background-position:center;
     background-size: 32px 32px;
+
 }
 
  /*-------------------------------------------------------------------------------------*/
@@ -603,6 +612,7 @@ button{
     padding: 0px;
     background-color     : #0016f0;
     border: 1px solid #ffffff;
+    color: #ffffff;
 }
 
 .tweet_word_count_T {
@@ -616,10 +626,10 @@ button{
 
 .ui-resizable-n {
     top        : 0;
-    border-top : 10px solid #000000;
+    border-top : 8px solid #000000;
 }
 
 .ui-resizable-e {
     right        : 0;
-    border-right : 10px solid #000000;
+    border-right : 8px solid #000000;
 }
