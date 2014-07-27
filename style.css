@@ -1,5 +1,5 @@
 button{
-    background    : #0016f0;
+    background    : #0085ff;
     color         : #eeeeee;
     border-radius : 10px;
     font-size: small;
@@ -8,7 +8,7 @@ button{
 }
 
   /*------------------------------------------------------------------------------------*/
- /*--Entypo Font---*/
+ /*--Fonts and Icons---*/
 /*------------------------------------------------------------------------------------*/
 @font-face {
     font-family               : "icomoon";
@@ -108,7 +108,7 @@ button{
 /*------------------------------------------------------------------------------------*/
 .resize_container {
     position : fixed !important;
-    top      : 75% !important;
+    top      : 77%  !important;
     left     : 0px !important;
     z-index  : 999;
 }
@@ -121,8 +121,9 @@ button{
     font-size  : 16px;
     border     : 0px;
     border-radius : 5px;
-    background-color     : #0016f0;
+    background-color     : #0085ff;
     color: #ffffff;
+    z-index: 1000;
 }
 
 .broken_alert_button_T{
@@ -132,15 +133,19 @@ button{
     z-index       : 999;
     box-sizing    : border-box;
     background-color: #cc2b2f;
+    z-index: 1000;
 }
 
 .minimize_button_T{
     position      : fixed;
     bottom        : 10px;
     left          : 0px;
-    z-index       : 999;
     box-sizing    : border-box;
 }
+
+  /*------------------------------------------------------------------------------------*/
+ /*----Ticker--------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 
 .ticker_toggle_T{
     background-image: url("chrome-extension://__MSG_@@extension_id__/SVG/chevron-right-outline.svg");
@@ -150,7 +155,6 @@ button{
     position      : fixed;
     bottom        : 10px;
     left          : 20px;
-    z-index       : 999;
     box-sizing    : border-box;
     text-align: center;
     display: inline-block;
@@ -167,7 +171,7 @@ button{
     border        : 0;
     border-radius : 5px;
     background-color : #0085ff;
-    overflow: hidden;
+    /*overflow: hidden;*/
     min-height: 60px;
 }
 
@@ -250,7 +254,7 @@ button{
 .ticker_buttons_container_T{
     display: inline-block;
     width: 45px;
-    background-color : #0085ff;
+    background-color : #0085FF;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -261,7 +265,7 @@ button{
     width      : 18px;
     margin     : 2px;
     padding    : 0px;
-    background : #002aa9;
+    background : ##0085ff;
     border     : 0;
     border-radius  : 5px;
     display: inline-block;
@@ -290,12 +294,14 @@ button{
     background-position:center;
     background-size: 16px 16px;
 }
-
+  /*------------------------------------------------------------------------------------*/
+ /*----App COntainer------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 .app_container_T{
-    position : relative;
+    /*position : relative;*/
     display  : none;
-    overflow : scroll;
-    height   : 150px;
+
+    height   : 160px;
     z-index  : 999;
 }
 
@@ -311,7 +317,6 @@ button{
     vertical-align : text-bottom;
     box-sizing     : border-box;
 
-    border-radius  : 5px;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -323,7 +328,7 @@ button{
     height           : 100%;
     width            : 50px;
 
-    background-color :#AAC7FF;
+    background-color :#33c2ff;
 }
 
 .large_menu_button_T{
@@ -333,7 +338,7 @@ button{
 
     border        : 0;
     border-radius : 10px;
-    background-color    : #0016f0;
+    background-color    : #0085ff;
     color: #ffffff;
 }
 
@@ -363,14 +368,15 @@ button{
     position         : relative;
     display          : inline-block;
 
-    overflow         : hidden;
+    /*overflow         : hidden;*/
     height           : 100%;
     width            : 350px;
     min-width        : 225px;
     margin           : 0;
+    margin-right     : 5px;
     padding          : 0px;
 
-    background-color : #0085ff;
+    background-color : #33c2ff;
     font-size        : 15px;
 }
 
@@ -394,6 +400,7 @@ button{
     background-color : #ff391c;
     color            : #ffffff;
     border           : 0;
+    border-radius: 5px;
 }
 
 .search_form_T {
@@ -415,15 +422,15 @@ button{
 
 .content_container_T {
     position : relative;
-
-    height   : 100%;
+    top   : 0%;
+    height: 95%;
     width    : 100%;
 }
 
 .content_selection_button_T {
     height    : 35px;
     width     : 100%;
-    background-color     : #0016f0;
+    background-color     : #0085ff;
     border: 1px solid #ffffff;
     font-size : 100%;
     color: #ffffff;
@@ -533,13 +540,13 @@ button{
     margin: 0px 7px 1px 2px;
 }
 
-.t_content:hover > .options_bar {
+/*.t_content:hover > .options_bar {
     display          : inline-block;
 }
 
 .t_content:hover{
      height: 100px;
-}
+}*/
 
  /*-------------------------------------------------------------------------------------*/
  /*Timeline Element*/
@@ -568,6 +575,7 @@ button{
     background-repeat: no-repeat;
     background-position:center;
     background-size: 32px 32px;
+    border-radius: 5px;
 
 }
 
@@ -610,7 +618,7 @@ button{
     width  : 50px;
     margin : 4px 2px;
     padding: 0px;
-    background-color     : #0016f0;
+    background-color     : #0085ff;
     border: 1px solid #ffffff;
     color: #ffffff;
 }
@@ -626,10 +634,12 @@ button{
 
 .ui-resizable-n {
     top        : 0;
-    border-top : 8px solid #000000;
+    border-top : 5px solid #000000;
+    border-radius: 5px;
 }
 
 .ui-resizable-e {
     right        : 0;
-    border-right : 8px solid #000000;
+    border-right : 5px solid #000000;
+    border-radius: 5px;
 }
